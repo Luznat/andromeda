@@ -1,6 +1,7 @@
 import MaskedView from '@react-native-masked-view/masked-view';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Platform, Text, View } from 'react-native';
+import { colors, gradients } from '../../theme/colors';
 
 type GoldGradientTitleProps = {
   text: string;
@@ -24,7 +25,7 @@ export function GoldGradientTitle({
     return (
       <Text
         style={{
-          color: '#e9c349',
+          color: colors.secondary,
           fontSize,
           lineHeight,
           fontFamily,
@@ -32,7 +33,7 @@ export function GoldGradientTitle({
           fontWeight: '700',
           letterSpacing,
           textAlign: 'center',
-          textShadowColor: '#ffe088',
+          textShadowColor: colors.secondaryFixed,
           textShadowOffset: { width: 0, height: 0 },
           textShadowRadius: 8,
         }}
@@ -59,7 +60,7 @@ export function GoldGradientTitle({
         <Text
           numberOfLines={1}
           style={{
-            color: '#000000',
+            color: colors.textMask,
             fontSize,
             lineHeight,
             fontFamily,
@@ -75,7 +76,7 @@ export function GoldGradientTitle({
     }>
       <LinearGradient
         style={{ width: w, height: h }}
-        colors={['#e9c349', '#ffe088']}
+        colors={gradients.goldTitle}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         locations={[0, 1]}

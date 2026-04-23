@@ -1,9 +1,5 @@
 import { StyleSheet } from 'react-native';
-
-const surface = '#0d1228';
-const secondary = '#e9c349';
-const tertiary = '#c6c6c6';
-const onSecondary = '#3c2f00';
+import { colors } from '../../theme/colors';
 
 export const FONTS = {
   // Chaves batem com useFonts(…)
@@ -16,7 +12,7 @@ export const FONTS = {
 export const styles = StyleSheet.create({
   root: {
     flex: 1,
-    backgroundColor: surface,
+    backgroundColor: colors.background,
   },
   scroll: {
     flex: 1,
@@ -51,17 +47,17 @@ export const styles = StyleSheet.create({
   ringOuter: {
     position: 'absolute',
     borderWidth: 1,
-    borderColor: 'rgba(233, 195, 73, 0.2)',
+    borderColor: colors.ringSecondaryBorder,
   },
   ringInner: {
     position: 'absolute',
     borderWidth: 1,
-    borderColor: 'rgba(214, 186, 255, 0.2)',
+    borderColor: colors.ringPrimaryBorder,
   },
   cosmicIcon: {
-    color: secondary,
+    color: colors.secondary,
     textAlign: 'center',
-    textShadowColor: 'rgba(233, 195, 73, 0.6)',
+    textShadowColor: colors.textShadowGold,
     textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 15,
   },
@@ -69,7 +65,7 @@ export const styles = StyleSheet.create({
     marginBottom: 16,
   },
   tagline: {
-    color: tertiary,
+    color: colors.textSecondary,
     fontSize: 18,
     fontWeight: '500',
     textAlign: 'center',
@@ -90,28 +86,28 @@ export const styles = StyleSheet.create({
   },
   submitButton: {
     borderRadius: 999,
-    backgroundColor: secondary,
+    backgroundColor: colors.secondary,
     paddingVertical: 20,
     paddingHorizontal: 20,
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'center',
     gap: 12,
-    shadowColor: 'rgba(233, 195, 73, 0.3)',
+    shadowColor: colors.shadowGold,
     shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 1,
     shadowRadius: 15,
     elevation: 10,
   },
   submitText: {
-    color: onSecondary,
+    color: colors.onSecondary,
     fontWeight: '700',
     fontSize: 18,
     letterSpacing: 0.5,
     fontFamily: FONTS.label,
   },
   submitIcon: {
-    color: onSecondary,
+    color: colors.onSecondary,
     fontSize: 22,
     fontWeight: '700',
   },
@@ -129,17 +125,17 @@ export const styles = StyleSheet.create({
   footerDivider: {
     width: 1,
     height: 16,
-    backgroundColor: 'rgba(74, 69, 80, 0.3)',
+    backgroundColor: colors.dividerMuted,
   },
   footerIcon: {
-    color: 'rgba(198, 198, 198, 0.4)',
+    color: colors.footerIconMuted,
     fontSize: 16,
   },
   footerMotto: {
     fontSize: 10,
     letterSpacing: 2.4,
     textTransform: 'uppercase' as const,
-    color: 'rgba(198, 198, 198, 0.3)',
+    color: colors.footerMottoMuted,
     fontWeight: '700',
     textAlign: 'center',
     fontFamily: FONTS.label,

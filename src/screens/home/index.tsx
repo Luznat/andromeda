@@ -2,6 +2,7 @@ import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { CosmicBottomNav } from '../../components/CosmicBottomNav';
 import { CosmicScreenBackground } from '../../components/cosmic/CosmicScreenBackground';
+import { gradients } from '../../theme/colors';
 import { styles } from './styles';
 
 const BOTTOM_BAR_CLEARANCE = 64;
@@ -70,7 +71,7 @@ export function HomeScreen() {
             accessibilityLabel="Nebulosa e estrelas no espaço"
           />
           <LinearGradient
-            colors={['rgba(8, 13, 34, 0.94)', 'rgba(20, 12, 48, 0.72)', 'rgba(45, 11, 90, 0.35)']}
+            colors={gradients.heroOverlay}
             locations={[0, 0.45, 1]}
             start={{ x: 0, y: 0.5 }}
             end={{ x: 1, y: 0.5 }}

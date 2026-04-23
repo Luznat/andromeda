@@ -1,6 +1,7 @@
 import { Image, StyleSheet, useWindowDimensions, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import type { DimensionValue } from 'react-native';
+import { colors, gradients } from '../../theme/colors';
 
 const STAR_POSITIONS: Array<{ top: DimensionValue; left: DimensionValue; key: string }> = [
   { key: 'a', top: '4%', left: '12%' },
@@ -48,11 +49,7 @@ export function CosmicScreenBackground({ variant = 'default' }: CosmicScreenBack
   return (
     <>
       <LinearGradient
-        colors={
-          isDeepTop
-            ? ['#080d22', 'rgba(13, 18, 40, 0.99)', 'rgba(18, 14, 45, 0.55)', '#0d1228']
-            : ['rgba(45, 11, 90, 0.45)', 'rgba(13, 18, 40, 0.98)', '#0d1228']
-        }
+        colors={isDeepTop ? gradients.cosmicAuroraDeepTop : gradients.cosmicAuroraDefault}
         locations={isDeepTop ? [0, 0.32, 0.62, 1] : [0, 0.55, 1]}
         start={{ x: 0.5, y: 0 }}
         end={{ x: 0.5, y: 1 }}
@@ -91,7 +88,7 @@ export function CosmicScreenBackground({ variant = 'default' }: CosmicScreenBack
       )}
       {isDeepTop && (
         <LinearGradient
-          colors={['rgba(8, 13, 34, 0.55)', 'rgba(8, 13, 34, 0.12)', 'transparent']}
+          colors={gradients.cosmicTopScrim}
           locations={[0, 0.45, 1]}
           start={{ x: 0.5, y: 0 }}
           end={{ x: 0.5, y: 1 }}
@@ -118,7 +115,7 @@ export function CosmicScreenBackground({ variant = 'default' }: CosmicScreenBack
         </>
       )}
       <LinearGradient
-        colors={['rgba(8, 13, 34, 0.96)', 'transparent']}
+        colors={gradients.cosmicBottomFade}
         start={{ x: 0.5, y: 1 }}
         end={{ x: 0.5, y: 0 }}
         style={styles.bottomFade}
@@ -137,7 +134,7 @@ const styles = StyleSheet.create({
     width: 2,
     height: 2,
     borderRadius: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: colors.white,
   },
   centerBlob: {
     position: 'absolute',
@@ -147,11 +144,11 @@ const styles = StyleSheet.create({
     height: 360,
     marginLeft: -180,
     borderRadius: 180,
-    backgroundColor: 'rgba(45, 11, 90, 0.12)',
+    backgroundColor: colors.primaryGlowOrb,
   },
   centerBlurOrb: {
     position: 'absolute',
-    backgroundColor: 'rgba(45, 11, 90, 0.1)',
+    backgroundColor: colors.primaryGlowOrbSoft,
   },
   topScrim: {
     position: 'absolute',

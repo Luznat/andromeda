@@ -1,12 +1,10 @@
 import { Platform, StyleSheet } from 'react-native';
 import { colors } from '../../theme/colors';
 
-const surface = '#0d1228';
-
 export const styles = StyleSheet.create({
   root: {
     flex: 1,
-    backgroundColor: surface,
+    backgroundColor: colors.background,
   },
   content: {
     flex: 1,
@@ -65,7 +63,7 @@ export const styles = StyleSheet.create({
   },
   secondaryButton: {
     borderWidth: 1,
-    borderColor: 'rgba(214,186,255,0.4)',
+    borderColor: colors.outlinePrimarySoft,
     borderRadius: 999,
     paddingVertical: 16,
     alignItems: 'center',
