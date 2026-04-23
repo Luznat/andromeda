@@ -1,5 +1,7 @@
 export const colors = {
   background: '#0d1228',
+  surfaceScrim: 'rgba(13, 18, 40, 0.88)',
+  primaryContainer: '#2d0b5a',
   surface: '#191e35',
   surfaceMuted: '#2f334b',
   primary: '#d6baff',

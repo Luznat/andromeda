@@ -2,9 +2,13 @@ import { StyleSheet } from 'react-native';
 import { colors } from '../../theme/colors';
 
 export const styles = StyleSheet.create({
-  container: {
+  root: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: colors.surfaceScrim,
+  },
+  scroll: {
+    flex: 1,
+    zIndex: 5,
   },
   content: {
     paddingHorizontal: 20,
@@ -59,21 +63,18 @@ export const styles = StyleSheet.create({
   },
   hero: {
     borderRadius: 28,
-    padding: 20,
-    minHeight: 198,
-    justifyContent: 'space-between',
-    backgroundColor: '#2d0b5a',
+    minHeight: 200,
     overflow: 'hidden',
+    backgroundColor: colors.primaryContainer,
   },
-  heroGlow: {
-    position: 'absolute',
-    width: 230,
-    height: 230,
-    borderRadius: 115,
-    backgroundColor: colors.primary,
-    opacity: 0.2,
-    right: -40,
-    top: -40,
+  heroImage: {
+    ...StyleSheet.absoluteFillObject,
+  },
+  heroContent: {
+    padding: 20,
+    minHeight: 200,
+    justifyContent: 'space-between',
+    zIndex: 1,
   },
   heroTitle: {
     color: colors.textPrimary,
@@ -122,11 +123,6 @@ export const styles = StyleSheet.create({
     color: colors.textSecondary,
     fontSize: 13,
     fontWeight: '600',
-  },
-  title: {
-    color: colors.textPrimary,
-    fontSize: 28,
-    fontWeight: '700',
   },
   sectionTitle: {
     color: colors.textPrimary,

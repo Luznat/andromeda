@@ -34,17 +34,26 @@ const NEBULA_IMAGE =
 const STARRY_IMAGE =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuDjVhY8H246cJYhFU8jfYOLaA2jDKDHe6yv2DWjhYW5UA35aqz61fUim5V2JpFt3Ti9CgSx-IrCO4Co5-z_kvfVeY6MRgH4i7AbLsXMCVxVJJDrH8EKZ_JhRdLa5dovix_hDcrc7CdpzfJWYqftO11PSB8BC23fYOPHWKf-GkF0fOirpL0PGC_oSnNpy2r1lYnqAzaCawDEvvGhFYwL_LXSMEfdIXdMKIHrygHeQLfBiOIIcknzI8yTSa43M7U6ACAj1gZ7dqSimKE';
 
-export function CosmicScreenBackground() {
+export type CosmicScreenBackgroundProps = {
+  variant?: 'default' | 'deepTop';
+};
+
+export function CosmicScreenBackground({ variant = 'default' }: CosmicScreenBackgroundProps) {
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
   const showDecorative = windowWidth >= 768;
   const centerOrb = Math.min(600, windowWidth * 0.95, windowHeight * 0.8);
   const orbOffset = -centerOrb / 2;
+  const isDeepTop = variant === 'deepTop';
 
   return (
     <>
       <LinearGradient
-        colors={['rgba(45, 11, 90, 0.45)', 'rgba(13, 18, 40, 0.98)', '#0d1228']}
-        locations={[0, 0.55, 1]}
+        colors={
+          isDeepTop
+            ? ['#080d22', 'rgba(13, 18, 40, 0.99)', 'rgba(18, 14, 45, 0.55)', '#0d1228']
+            : ['rgba(45, 11, 90, 0.45)', 'rgba(13, 18, 40, 0.98)', '#0d1228']
+        }
+        locations={isDeepTop ? [0, 0.32, 0.62, 1] : [0, 0.55, 1]}
         start={{ x: 0.5, y: 0 }}
         end={{ x: 0.5, y: 1 }}
         style={styles.aurora}
@@ -57,27 +66,39 @@ export function CosmicScreenBackground() {
             {
               top: p.top,
               left: p.left,
-              opacity: 0.1,
+              opacity: isDeepTop ? 0.08 : 0.1,
             },
           ]}
         />
       ))}
-      <View style={styles.centerBlob} pointerEvents="none" />
-      <View
-        pointerEvents="none"
-        style={[
-          styles.centerBlurOrb,
-          {
-            width: centerOrb,
-            height: centerOrb,
-            borderRadius: centerOrb / 2,
-            top: '50%',
-            left: '50%',
-            marginLeft: orbOffset,
-            marginTop: orbOffset,
-          },
-        ]}
-      />
+      {!isDeepTop && <View style={styles.centerBlob} pointerEvents="none" />}
+      {!isDeepTop && (
+        <View
+          pointerEvents="none"
+          style={[
+            styles.centerBlurOrb,
+            {
+              width: centerOrb,
+              height: centerOrb,
+              borderRadius: centerOrb / 2,
+              top: '50%',
+              left: '50%',
+              marginLeft: orbOffset,
+              marginTop: orbOffset,
+            },
+          ]}
+        />
+      )}
+      {isDeepTop && (
+        <LinearGradient
+          colors={['rgba(8, 13, 34, 0.55)', 'rgba(8, 13, 34, 0.12)', 'transparent']}
+          locations={[0, 0.45, 1]}
+          start={{ x: 0.5, y: 0 }}
+          end={{ x: 0.5, y: 1 }}
+          style={styles.topScrim}
+          pointerEvents="none"
+        />
+      )}
       {showDecorative && (
         <>
           <View style={styles.decorativeImageLeft} pointerEvents="none">
@@ -131,6 +152,14 @@ const styles = StyleSheet.create({
   centerBlurOrb: {
     position: 'absolute',
     backgroundColor: 'rgba(45, 11, 90, 0.1)',
+  },
+  topScrim: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    height: 200,
+    zIndex: 3,
   },
   bottomFade: {
     position: 'absolute',
