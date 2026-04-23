@@ -1,0 +1,106 @@
+---
+description: Andromeda project standards and screen structure rules
+alwaysApply: true
+---
+
+# 🌌 Andromeda - Project Guidelines
+
+## 📌 Objetivo
+
+Este projeto tem como objetivo desenvolver um aplicativo mobile utilizando React Native com Expo e TypeScript para conectar oraculistas e clientes.
+
+## 🧱 Estrutura do Projeto
+
+A estrutura deve ser mantida organizada da seguinte forma:
+
+```txt
+src/
+  components/
+  screens/
+  navigation/
+  services/
+  types/
+  assets/
+```
+
+## 📱 Padrões de Desenvolvimento
+
+### 🔹 Componentes
+
+- Devem ser reutilizáveis sempre que possível
+- Devem ser pequenos e com responsabilidade única
+- Nomeação em PascalCase (ex: `OraculistCard.tsx`)
+
+### 🔹 Telas (Screens)
+
+- Devem conter apenas estrutura e composição de componentes
+- Evitar lógica complexa diretamente na tela
+- Para toda nova tela, seguir esta estrutura mínima:
+
+```txt
+src/screens/<screen-name>/
+  index.tsx
+  styles.ts
+```
+
+### 🔹 Tipagem (TypeScript)
+
+- Sempre tipar props e estados
+- Evitar uso de `any`
+- Tipos devem ser centralizados na pasta `types/`
+
+### 🔹 Estilo
+
+- Utilizar tema escuro (dark mode)
+- Evitar estilos inline grandes
+- Preferir `StyleSheet`
+
+## 🧭 Navegação
+
+- Utilizar React Navigation (Stack)
+- Fluxo principal: `Home -> Profile -> Chat`
+
+## 💬 Chat (MVP)
+
+- Inicialmente com dados mockados
+- Estrutura preparada para futura integração com backend
+
+## 📦 Dados
+
+- Utilizar dados mockados nesta fase
+- Evitar integração com APIs externas no MVP
+
+## 🔀 Commits
+
+Seguir padrão semântico:
+
+- `feat`: nova funcionalidade
+- `fix`: correção de bug
+- `refactor`: melhoria de código
+- `style`: ajustes visuais
+- `chore`: tarefas gerais
+
+Exemplo:
+
+`feat: criação da tela de perfil do oraculista`
+
+## 🚫 Evitar
+
+- Código duplicado
+- Componentes muito grandes
+- Falta de tipagem
+- Misturar lógica com UI
+
+## 🚀 Evolução futura
+
+O projeto poderá evoluir para incluir:
+
+- Integração com Firebase
+- Sistema de autenticação
+- Chat em tempo real
+- Pagamentos
+- Avaliações
+
+## 🧠 Filosofia do Projeto
+
+Manter o código simples, organizado e escalável, priorizando clareza e qualidade ao invés de complexidade desnecessária.
