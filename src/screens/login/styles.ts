@@ -1,16 +1,9 @@
 import { StyleSheet } from 'react-native';
 
 const surface = '#0d1228';
-const primary = '#d6baff';
 const secondary = '#e9c349';
-const onSurface = '#dde1ff';
 const tertiary = '#c6c6c6';
-const outline = '#958e9b';
-const outlineVariant = '#4a4550';
 const onSecondary = '#3c2f00';
-const onPrimary = '#3d1f6a';
-const surfaceContainer = '#191e35';
-const surfaceContainerHighest = '#2f334b';
 
 export const FONTS = {
   // Chaves batem com useFonts(…)
@@ -87,80 +80,15 @@ export const styles = StyleSheet.create({
     width: '100%',
     fontFamily: FONTS.bodyMedium,
   },
-  formSection: {
+  ctaSection: {
     width: '100%',
     maxWidth: 320,
+    alignSelf: 'center',
   },
-  constellationHint: {
-    color: 'rgba(198, 198, 198, 0.6)',
-    fontSize: 14,
-    fontWeight: '500',
-    textAlign: 'center',
-    marginBottom: 24,
-    fontFamily: FONTS.body,
-  },
-  form: {
-    backgroundColor: surfaceContainer,
-    borderRadius: 20,
-    padding: 18,
-    gap: 10,
-    borderWidth: 1,
-    borderColor: outlineVariant,
-    shadowColor: primary,
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.15,
-    shadowRadius: 40,
-    elevation: 4,
-  },
-  formSectionGap: {
+  ctaSectionGap: {
     marginTop: 32,
   },
-  label: {
-    color: onSurface,
-    fontSize: 13,
-    fontWeight: '700',
-    marginTop: 2,
-    fontFamily: FONTS.label,
-  },
-  input: {
-    backgroundColor: surfaceContainerHighest,
-    color: onSurface,
-    borderRadius: 12,
-    paddingHorizontal: 14,
-    paddingVertical: 12,
-    borderWidth: 1,
-    borderColor: outline,
-    fontSize: 15,
-    fontFamily: FONTS.body,
-  },
-  profileRow: {
-    flexDirection: 'row',
-    gap: 8,
-    marginTop: 4,
-  },
-  profileButton: {
-    flex: 1,
-    borderRadius: 12,
-    backgroundColor: surfaceContainerHighest,
-    borderWidth: 1,
-    borderColor: outlineVariant,
-    paddingVertical: 12,
-    alignItems: 'center',
-  },
-  profileButtonActive: {
-    backgroundColor: primary,
-    borderColor: 'rgba(214, 186, 255, 0.5)',
-  },
-  profileText: {
-    color: tertiary,
-    fontWeight: '600',
-    fontFamily: FONTS.label,
-  },
-  profileTextActive: {
-    color: onPrimary,
-  },
   submitButton: {
-    marginTop: 14,
     borderRadius: 999,
     backgroundColor: secondary,
     paddingVertical: 20,
@@ -174,9 +102,6 @@ export const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 15,
     elevation: 10,
-  },
-  submitButtonDisabled: {
-    opacity: 0.45,
   },
   submitText: {
     color: onSecondary,
