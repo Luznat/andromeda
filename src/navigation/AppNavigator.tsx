@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
+import type { CosmicTabId } from '../components/CosmicBottomNav';
 import { HomeScreen } from '../screens/home';
 import { LoginScreen } from '../screens/login';
+import { SearchScreen } from '../screens/search';
 import { SplashScreen } from '../screens/splash';
 
 type AppRoute = 'splash' | 'login' | 'app';
@@ -11,6 +13,7 @@ const INITIAL_APP_ROUTE: AppRoute = 'login';
 
 export function AppNavigator() {
   const [currentRoute, setCurrentRoute] = useState<AppRoute>(INITIAL_APP_ROUTE);
+  const [activeTab, setActiveTab] = useState<CosmicTabId>('home');
 
   if (currentRoute === 'splash') {
     return (
@@ -27,7 +30,11 @@ export function AppNavigator() {
 
   return (
     <View style={styles.appShell}>
-      <HomeScreen />
+      {activeTab === 'search' ? (
+        <SearchScreen activeTab={activeTab} onTabChange={setActiveTab} />
+      ) : (
+        <HomeScreen activeTab={activeTab} onTabChange={setActiveTab} />
+      )}
     </View>
   );
 }

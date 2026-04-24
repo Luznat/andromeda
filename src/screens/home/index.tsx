@@ -1,5 +1,6 @@
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import type { CosmicTabId } from '../../components/CosmicBottomNav';
 import { CosmicBottomNav } from '../../components/CosmicBottomNav';
 import { CosmicScreenBackground } from '../../components/cosmic/CosmicScreenBackground';
 import { gradients } from '../../theme/colors';
@@ -38,7 +39,12 @@ const featuredReadings = [
   },
 ];
 
-export function HomeScreen() {
+type HomeScreenProps = {
+  activeTab?: CosmicTabId;
+  onTabChange?: (id: CosmicTabId) => void;
+};
+
+export function HomeScreen({ activeTab = 'home', onTabChange }: HomeScreenProps) {
   return (
     <View style={styles.root}>
       <CosmicScreenBackground variant="deepTop" />
@@ -124,7 +130,7 @@ export function HomeScreen() {
           ))}
         </View>
       </ScrollView>
-      <CosmicBottomNav />
+      <CosmicBottomNav activeTab={activeTab} onTabChange={onTabChange} />
     </View>
   );
 }

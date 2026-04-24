@@ -23,10 +23,15 @@ const TABS: TabConfig[] = [
 
 type CosmicBottomNavProps = {
   initialTab?: CosmicTabId;
+  activeTab?: CosmicTabId;
   onTabChange?: (id: CosmicTabId) => void;
 };
 
-export function CosmicBottomNav({ initialTab = 'home', onTabChange }: CosmicBottomNavProps) {
+export function CosmicBottomNav({
+  initialTab = 'home',
+  activeTab,
+  onTabChange,
+}: CosmicBottomNavProps) {
   const [active, setActive] = useState<CosmicTabId>(initialTab);
 
   const handlePress = useCallback(
@@ -40,7 +45,7 @@ export function CosmicBottomNav({ initialTab = 'home', onTabChange }: CosmicBott
   return (
     <View style={styles.bar}>
       {TABS.map((tab) => {
-        const isActive = active === tab.id;
+        const isActive = (activeTab ?? active) === tab.id;
         return (
           <Pressable
             key={tab.id}
