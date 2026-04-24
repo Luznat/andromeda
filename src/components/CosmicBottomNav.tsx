@@ -15,10 +15,10 @@ type TabConfig = {
 };
 
 const TABS: TabConfig[] = [
-  { id: 'home', label: 'Home', icon: 'bedtime' },
-  { id: 'search', label: 'Search', icon: 'search' },
-  { id: 'readings', label: 'Readings', icon: 'menu-book' },
-  { id: 'profile', label: 'Profile', icon: 'person' },
+  { id: 'home', label: 'Inicio', icon: 'bedtime' },
+  { id: 'search', label: 'Buscar', icon: 'search' },
+  { id: 'readings', label: 'Leituras', icon: 'menu-book' },
+  { id: 'profile', label: 'Perfil', icon: 'person' },
 ];
 
 type CosmicBottomNavProps = {
