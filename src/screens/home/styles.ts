@@ -16,51 +16,6 @@ export const styles = StyleSheet.create({
     paddingBottom: 28,
     gap: 22,
   },
-  topBar: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  brandRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  brandIcon: {
-    color: colors.primary,
-    fontSize: 18,
-  },
-  brandText: {
-    color: colors.secondary,
-    fontSize: 24,
-    fontWeight: '700',
-    fontStyle: 'italic',
-    letterSpacing: 2,
-  },
-  topActions: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-  },
-  topAction: {
-    color: colors.textSecondary,
-    fontSize: 18,
-  },
-  avatarPlaceholder: {
-    width: 34,
-    height: 34,
-    borderRadius: 17,
-    backgroundColor: colors.surfaceMuted,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: colors.outlineVariant,
-  },
-  avatarText: {
-    color: colors.textPrimary,
-    fontWeight: '700',
-    fontSize: 12,
-  },
   hero: {
     borderRadius: 28,
     minHeight: 200,

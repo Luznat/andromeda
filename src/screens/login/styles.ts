@@ -44,23 +44,6 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     marginBottom: 32,
   },
-  ringOuter: {
-    position: 'absolute',
-    borderWidth: 1,
-    borderColor: colors.ringSecondaryBorder,
-  },
-  ringInner: {
-    position: 'absolute',
-    borderWidth: 1,
-    borderColor: colors.ringPrimaryBorder,
-  },
-  cosmicIcon: {
-    color: colors.secondary,
-    textAlign: 'center',
-    textShadowColor: colors.textShadowGold,
-    textShadowOffset: { width: 0, height: 0 },
-    textShadowRadius: 15,
-  },
   titleGap: {
     marginBottom: 16,
   },

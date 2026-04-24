@@ -2,7 +2,9 @@ import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import type { CosmicTabId } from '../../components/CosmicBottomNav';
 import { CosmicBottomNav } from '../../components/CosmicBottomNav';
+import { CosmicHeader } from '../../components/CosmicHeader';
 import { CosmicScreenBackground } from '../../components/cosmic/CosmicScreenBackground';
+import { ORACLE_CATEGORIES } from '../../data/oracleCategories';
 import { gradients } from '../../theme/colors';
 import { styles } from './styles';
 
@@ -10,13 +12,6 @@ const BOTTOM_BAR_CLEARANCE = 64;
 
 const HERO_NEBULA_URI =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuCQYeomCl1-uyFKB_INho71Xe5gxNZsWiPuByOwT8UrwqkW7R5iZr8QAQdyBLeqKfjdcOPy6RxnFQv9ndni9bq14t4CkOsPluyJ6AGtl4pt2xR53-w-MfCdOZUx9yEmlAHKE87FEp4Z4vvdF-vRWnSYjTvsEqJBsSbpIMeTMh-PG3FfIs1n3ChMLrLTJaZWrmjs1FmLSaYB39u00lGbFD6dvyPIYkVGe9EFnmqXLViB72jJcHhWIeX_O7TsyR5tezY-aCYmsvxRosA';
-
-const categories = [
-  { id: '1', icon: '✦', label: 'Tarot' },
-  { id: '2', icon: '◉', label: 'Buzios' },
-  { id: '3', icon: '◇', label: 'Runas' },
-  { id: '4', icon: '#', label: 'Numerologia' },
-];
 
 const featuredReadings = [
   {
@@ -56,18 +51,7 @@ export function HomeScreen({ activeTab = 'home', onTabChange }: HomeScreenProps)
         ]}
         showsVerticalScrollIndicator={false}
       >
-        <View style={styles.topBar}>
-          <View style={styles.brandRow}>
-            <Text style={styles.brandIcon}>✦</Text>
-            <Text style={styles.brandText}>Andrômeda</Text>
-          </View>
-          <View style={styles.topActions}>
-            <Text style={styles.topAction}>🔔</Text>
-            <View style={styles.avatarPlaceholder}>
-              <Text style={styles.avatarText}>VS</Text>
-            </View>
-          </View>
-        </View>
+        <CosmicHeader />
 
         <View style={styles.hero}>
           <Image
@@ -99,7 +83,7 @@ export function HomeScreen({ activeTab = 'home', onTabChange }: HomeScreenProps)
         </View>
 
         <View style={styles.categoryGrid}>
-          {categories.map((category) => (
+          {ORACLE_CATEGORIES.map((category) => (
             <View key={category.id} style={styles.categoryCard}>
               <View style={styles.categoryIconWrap}>
                 <Text style={styles.categoryIcon}>{category.icon}</Text>

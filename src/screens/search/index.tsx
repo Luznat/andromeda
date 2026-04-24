@@ -2,7 +2,9 @@ import { Image, ScrollView, Text, TextInput, View } from 'react-native';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import type { CosmicTabId } from '../../components/CosmicBottomNav';
 import { CosmicBottomNav } from '../../components/CosmicBottomNav';
+import { CosmicHeader } from '../../components/CosmicHeader';
 import { CosmicScreenBackground } from '../../components/cosmic/CosmicScreenBackground';
+import { ORACLE_CATEGORIES } from '../../data/oracleCategories';
 import { styles } from './styles';
 
 const recentSearches = [
@@ -10,13 +12,6 @@ const recentSearches = [
   'Mercurio Retrogrado',
   'Mapa Astral Gratis',
   'Tarot do Amor',
-];
-
-const categories = [
-  { id: 'tarot', icon: 'style', label: 'Tarot' },
-  { id: 'buzios', icon: 'waves', label: 'Buzios' },
-  { id: 'runas', icon: 'history-edu', label: 'Runas' },
-  { id: 'numerologia', icon: 'pin', label: 'Numerologia' },
 ];
 
 const featuredReadings = [
@@ -50,7 +45,7 @@ export function SearchScreen({ activeTab = 'search', onTabChange }: SearchScreen
     <View style={styles.root}>
       <CosmicScreenBackground variant="deepTop" />
       <ScrollView style={styles.scroll} contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-        <Text style={styles.brandTitle}>Andromeda</Text>
+        <CosmicHeader />
 
         <View style={styles.searchInputWrap}>
           <MaterialIcons name="search" size={20} style={styles.searchInputIcon} />
@@ -74,10 +69,12 @@ export function SearchScreen({ activeTab = 'search', onTabChange }: SearchScreen
 
         <View style={styles.sectionBlock}>
           <Text style={styles.sectionTitle}>Categorias populares</Text>
-          <View style={styles.categoriesGrid}>
-            {categories.map((category) => (
+          <View style={styles.categoryGrid}>
+            {ORACLE_CATEGORIES.map((category) => (
               <View key={category.id} style={styles.categoryCard}>
-                <MaterialIcons name={category.icon as never} size={34} style={styles.categoryIcon} />
+                <View style={styles.categoryIconWrap}>
+                  <Text style={styles.categoryIcon}>{category.icon}</Text>
+                </View>
                 <Text style={styles.categoryLabel}>{category.label}</Text>
               </View>
             ))}

@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { Manrope_400Regular, Manrope_500Medium, Manrope_700Bold } from '@expo-google-fonts/manrope';
 import { NotoSerif_700Bold_Italic } from '@expo-google-fonts/noto-serif';
+import { CosmicLogoMark } from '../../components/CosmicLogoMark';
 import { GoldGradientTitle } from '../../components/cosmic/GoldGradientTitle';
 import { CosmicScreenBackground } from '../../components/cosmic/CosmicScreenBackground';
 import { colors } from '../../theme/colors';
@@ -63,37 +64,7 @@ export function LoginScreen({ onLogin }: LoginScreenProps) {
         <View style={styles.main}>
           <View style={styles.logoBlock}>
             <View style={[styles.ringWrap, { width: ring, height: ring }]}>
-              <View
-                style={[
-                  styles.ringOuter,
-                  {
-                    width: ring,
-                    height: ring,
-                    borderRadius: ring / 2,
-                  },
-                ]}
-              />
-              <View
-                style={[
-                  styles.ringInner,
-                  {
-                    top: 16,
-                    left: 16,
-                    right: 16,
-                    bottom: 16,
-                    borderRadius: 9999,
-                  },
-                ]}
-              />
-              <Text
-                style={[
-                  styles.cosmicIcon,
-                  { fontSize: iconSize, lineHeight: iconSize + 4 },
-                ]}
-                accessible={false}
-              >
-                ✦
-              </Text>
+              <CosmicLogoMark size={ring} iconScale={iconSize / ring} ringInset={16 / ring} />
             </View>
             <View style={styles.titleGap}>
               <GoldGradientTitle
