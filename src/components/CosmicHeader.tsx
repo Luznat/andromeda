@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { CosmicLogoMark } from './CosmicLogoMark';
 import { colors } from '../theme/colors';
 
@@ -16,7 +17,7 @@ export function CosmicHeader({ profileInitials = 'VS' }: CosmicHeaderProps) {
         <Text style={styles.brandText}>{HEADER_BRAND_TITLE}</Text>
       </View>
       <View style={styles.topActions}>
-        <Text style={styles.topAction}>🔔</Text>
+        <MaterialIcons name="notifications-none" size={20} style={styles.topAction} />
         <View style={styles.avatarPlaceholder}>
           <Text style={styles.avatarText}>{profileInitials}</Text>
         </View>

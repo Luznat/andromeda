@@ -16,52 +16,77 @@ export const styles = StyleSheet.create({
     paddingBottom: 108,
     gap: 20,
   },
-  sectionHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-end',
+  filterRow: {
+    gap: 10,
+    paddingRight: 8,
   },
-  sectionTitle: {
-    color: colors.textPrimary,
-    fontSize: 28,
-    fontWeight: '700',
-  },
-  sectionAction: {
-    color: colors.textSecondary,
-    fontSize: 13,
-    fontWeight: '600',
-  },
-  cardList: {
-    gap: 14,
-  },
-  card: {
-    borderRadius: 24,
-    backgroundColor: colors.surfaceLow,
+  filterChip: {
+    borderRadius: 999,
+    backgroundColor: colors.surfaceMuted,
     borderWidth: 1,
     borderColor: colors.outlineVariant,
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+  },
+  filterChipActive: {
+    backgroundColor: colors.secondary,
+    borderColor: colors.secondary,
+  },
+  filterLabel: {
+    color: colors.textSecondary,
+    fontSize: 12,
+    fontWeight: '600',
+  },
+  filterLabelActive: {
+    color: colors.onSecondary,
+  },
+  cardList: {
+    gap: 16,
+  },
+  card: {
+    borderRadius: 18,
+    backgroundColor: 'rgba(25, 30, 53, 0.4)',
+    borderWidth: 1,
+    borderColor: 'rgba(233, 195, 73, 0.15)',
+    overflow: 'hidden',
+  },
+  cardImage: {
+    width: '100%',
+    height: 180,
+  },
+  cardContent: {
     padding: 14,
-    gap: 10,
+    gap: 8,
   },
   cardHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  badge: {
-    color: colors.secondary,
-    fontSize: 10,
-    fontWeight: '700',
-    letterSpacing: 1.1,
-    textTransform: 'uppercase',
+  ratingWrap: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 3,
   },
-  price: {
-    color: colors.primary,
-    fontSize: 16,
+  ratingIcon: {
+    color: colors.secondary,
+  },
+  rating: {
+    color: colors.secondary,
     fontWeight: '700',
+    fontSize: 12,
+  },
+  specialty: {
+    color: colors.secondaryFixed,
+    fontSize: 11,
+    fontWeight: '700',
+    textTransform: 'uppercase',
+    fontStyle: 'italic',
+    letterSpacing: 0.6,
   },
   title: {
-    color: colors.textPrimary,
-    fontSize: 18,
+    color: colors.primary,
+    fontSize: 22,
     fontWeight: '700',
   },
   description: {
@@ -69,25 +94,41 @@ export const styles = StyleSheet.create({
     fontSize: 13,
     lineHeight: 18,
   },
-  metaRow: {
+  footerRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
-    marginTop: 2,
+    justifyContent: 'space-between',
+    marginTop: 4,
   },
-  metaChip: {
-    color: colors.textSecondary,
-    fontSize: 11,
-    textTransform: 'uppercase',
-    borderWidth: 1,
-    borderColor: colors.primaryOutlineFaint,
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    borderRadius: 8,
-  },
-  rating: {
-    color: colors.secondary,
+  investmentLabel: {
+    color: colors.inputPlaceholder,
+    fontSize: 10,
     fontWeight: '700',
+    textTransform: 'uppercase',
+    letterSpacing: 0.8,
+  },
+  price: {
+    color: colors.textPrimary,
+    fontSize: 20,
+    fontWeight: '700',
+  },
+  priceDetail: {
+    color: colors.inputPlaceholder,
     fontSize: 12,
+    fontWeight: '400',
+  },
+  detailsButton: {
+    backgroundColor: colors.primaryContainer,
+    borderWidth: 1,
+    borderColor: 'rgba(214,186,255,0.2)',
+    paddingHorizontal: 14,
+    paddingVertical: 9,
+    borderRadius: 10,
+  },
+  detailsButtonText: {
+    color: colors.primary,
+    fontSize: 12,
+    fontWeight: '700',
+    textTransform: 'uppercase',
   },
 });
