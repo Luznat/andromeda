@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import type { CosmicTabId } from '../components/CosmicBottomNav';
 import { HomeScreen } from '../screens/home';
 import { LoginScreen } from '../screens/login';
+import { ReadingsScreen } from '../screens/readings';
 import { SearchScreen } from '../screens/search';
 import { SplashScreen } from '../screens/splash';
 
@@ -30,9 +31,13 @@ export function AppNavigator() {
 
   return (
     <View style={styles.appShell}>
-      {activeTab === 'search' ? (
+      {activeTab === 'search' && (
         <SearchScreen activeTab={activeTab} onTabChange={setActiveTab} />
-      ) : (
+      )}
+      {activeTab === 'readings' && (
+        <ReadingsScreen activeTab={activeTab} onTabChange={setActiveTab} />
+      )}
+      {activeTab === 'home' && (
         <HomeScreen activeTab={activeTab} onTabChange={setActiveTab} />
       )}
     </View>
