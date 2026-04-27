@@ -113,6 +113,4 @@ npm run web
 - Implementar testes (unitários e de componentes).
 - Configurar CI para lint, typecheck e build.
 
-## Licença
 
-Defina aqui a licença do projeto (ex.: MIT) conforme a necessidade do time.
