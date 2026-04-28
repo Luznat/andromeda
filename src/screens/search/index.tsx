@@ -5,6 +5,7 @@ import { CosmicBottomNav } from '../../components/CosmicBottomNav';
 import { CosmicHeader } from '../../components/CosmicHeader';
 import { CosmicScreenBackground } from '../../components/cosmic/CosmicScreenBackground';
 import { ORACLE_CATEGORIES } from '../../data/oracleCategories';
+import { colors } from '../../theme/colors';
 import { styles } from './styles';
 
 const recentSearches = [
@@ -34,6 +35,36 @@ const featuredReadings = [
       'https://lh3.googleusercontent.com/aida-public/AB6AXuCkIj6S7i5FCA7SLRX1LnLcB7dqP_C_yKk0cFw8rN6iOnHu-c7aRjRKmECYiqtNTGpPp9woHCWTgwMMiol8r7Ak1uOyc8qDiwhVo-qW-a651nKDrS7LHxvgu72Oym2Wt61AjHc_4yxLdIzDBEGMizd6f5RibW51lnD2p-G3f0188pK2kcji5543TE866deSB9cLuEAmmtgOHZq6cyjiTMF_kLridEYsTWnM8cFHVvXMw6SOiy7beQUsxTZ8DF0h_-sxPXkNhDcP37g',
   },
 ];
+
+const categoryThemeById: Record<
+  string,
+  { cardBackground: string; cardBorder: string; iconBackground: string; iconBorder: string }
+> = {
+  '1': {
+    cardBackground: 'rgba(45, 11, 90, 0.45)',
+    cardBorder: 'rgba(214,186,255,0.55)',
+    iconBackground: 'rgba(214,186,255,0.16)',
+    iconBorder: 'rgba(214,186,255,0.65)',
+  },
+  '2': {
+    cardBackground: 'rgba(175, 141, 17, 0.22)',
+    cardBorder: 'rgba(233,195,73,0.55)',
+    iconBackground: 'rgba(233,195,73,0.18)',
+    iconBorder: 'rgba(233,195,73,0.65)',
+  },
+  '3': {
+    cardBackground: 'rgba(28, 45, 92, 0.42)',
+    cardBorder: 'rgba(151,182,255,0.5)',
+    iconBackground: 'rgba(151,182,255,0.16)',
+    iconBorder: 'rgba(151,182,255,0.6)',
+  },
+  '4': {
+    cardBackground: 'rgba(36, 74, 64, 0.35)',
+    cardBorder: 'rgba(108,214,179,0.48)',
+    iconBackground: 'rgba(108,214,179,0.16)',
+    iconBorder: 'rgba(108,214,179,0.55)',
+  },
+};
 
 type SearchScreenProps = {
   activeTab?: CosmicTabId;
@@ -71,9 +102,35 @@ export function SearchScreen({ activeTab = 'search', onTabChange }: SearchScreen
           <Text style={styles.sectionTitle}>Categorias populares</Text>
           <View style={styles.categoryGrid}>
             {ORACLE_CATEGORIES.map((category) => (
-              <View key={category.id} style={styles.categoryCard}>
-                <View style={styles.categoryIconWrap}>
-                  <Text style={styles.categoryIcon}>{category.icon}</Text>
+              <View
+                key={category.id}
+                style={[
+                  styles.categoryCard,
+                  {
+                    backgroundColor: categoryThemeById[category.id]?.cardBackground ?? 'rgba(25, 30, 53, 0.78)',
+                    borderColor: categoryThemeById[category.id]?.cardBorder ?? colors.secondary,
+                  },
+                ]}
+              >
+                <View
+                  style={[
+                    styles.categoryIconWrap,
+                    {
+                      backgroundColor:
+                        categoryThemeById[category.id]?.iconBackground ?? 'rgba(233,195,73,0.14)',
+                      borderColor: categoryThemeById[category.id]?.iconBorder ?? colors.secondary,
+                    },
+                  ]}
+                >
+                  <Text
+                    style={[
+                      styles.categoryIcon,
+                      category.id === '3' && { color: '#b9cbff' },
+                      category.id === '4' && { color: '#84e7c4' },
+                    ]}
+                  >
+                    {category.icon}
+                  </Text>
                 </View>
                 <Text style={styles.categoryLabel}>{category.label}</Text>
               </View>
