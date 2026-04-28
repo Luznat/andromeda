@@ -25,9 +25,10 @@ const menuItems: { id: string; label: string; icon: MaterialIconName }[] = [
 type ProfileScreenProps = {
   activeTab?: CosmicTabId;
   onTabChange?: (id: CosmicTabId) => void;
+  onLogout?: () => void;
 };
 
-export function ProfileScreen({ activeTab = 'profile', onTabChange }: ProfileScreenProps) {
+export function ProfileScreen({ activeTab = 'profile', onTabChange, onLogout }: ProfileScreenProps) {
   return (
     <View style={styles.root}>
       <CosmicScreenBackground variant="deepTop" />
@@ -114,7 +115,7 @@ export function ProfileScreen({ activeTab = 'profile', onTabChange }: ProfileScr
         </View>
 
         <View style={styles.footer}>
-          <Pressable style={styles.logoutButton}>
+          <Pressable style={styles.logoutButton} onPress={onLogout} accessibilityLabel="Encerrar conexao e ir para login">
             <MaterialIcons name="logout" size={18} color={colors.error} />
             <Text style={styles.logoutText}>Encerrar Conexao</Text>
           </Pressable>
