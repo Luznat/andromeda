@@ -13,8 +13,8 @@ type ProfessionalServiceScreenProps = {
 
 export function ProfessionalServiceScreen({ service, onBack }: ProfessionalServiceScreenProps) {
   const scheduleItems = [
-    { day: 'Hoje', time: '18:30, 20:00' },
-    { day: 'Amanha', time: '09:00, 14:15' },
+    { day: 'Hoje', time: '18:30 ás 20:00' },
+    { day: 'Amanha', time: '09:00 ás 14:15' },
   ];
 
   const reviews = [
@@ -59,7 +59,6 @@ export function ProfessionalServiceScreen({ service, onBack }: ProfessionalServi
         </View>
 
         <View style={styles.profileSection}>
-          <View style={styles.avatarGlow} />
           <LinearGradient
             colors={[colors.secondary, colors.primary, colors.secondaryContainer]}
             start={{ x: 0, y: 0 }}
@@ -165,7 +164,7 @@ export function ProfessionalServiceScreen({ service, onBack }: ProfessionalServi
           </Text>
         </View>
         <Pressable style={styles.reserveButton}>
-          <MaterialIcons name="event-upcoming" size={18} color={colors.onSecondary} />
+          <MaterialIcons name="event-available" size={18} color={colors.onSecondary} />
           <Text style={styles.reserveButtonText}>Agendar agora</Text>
         </Pressable>
       </View>

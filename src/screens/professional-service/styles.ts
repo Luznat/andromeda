@@ -41,14 +41,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 10,
   },
-  avatarGlow: {
-    position: 'absolute',
-    width: 180,
-    height: 180,
-    borderRadius: 90,
-    backgroundColor: 'rgba(214,186,255,0.18)',
-    top: -10,
-  },
+
   avatarFrame: {
     width: 150,
     height: 150,
