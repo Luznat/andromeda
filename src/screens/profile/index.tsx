@@ -11,9 +11,6 @@ import { styles } from './styles';
 
 type MaterialIconName = ComponentProps<typeof MaterialIcons>['name'];
 
-const AVATAR_URI =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuAXCh_shIcmsdsSS9PpSUu9uzCfeK4MYZ06xVDEymUrYza9gSBcieGW_VKeE1skeBzICzhLtRNEay4-GtWhUVW8q0ZtPymzk473upcYzkID4lAkCdo7SrkdtrJk7K-yl9cF7zNTgzx0arLjW7rI6IL2uoFdMRa9wj_YcSkj_f82A_oqbsDIthKqSXMQWY6VFk87ITPRquxUhaYGFb1i3cqild9E0e68sB4wGrLoWJ3kqinwKqIxHSKwEMlD07rJq5zZWdyusndzRIg';
-
 const menuItems: { id: string; label: string; icon: MaterialIconName }[] = [
   { id: '1', label: 'Meu Mapa Astral', icon: 'auto-awesome' },
   { id: '2', label: 'Historico de Leituras', icon: 'history' },
@@ -44,7 +41,11 @@ export function ProfileScreen({ activeTab = 'profile', onTabChange, onLogout }: 
               style={styles.avatarFrameGradient}
             >
               <View style={styles.avatarInnerRing}>
-                <Image source={{ uri: AVATAR_URI }} style={styles.avatarImage} resizeMode="cover" />
+                <Image
+                  source={require('../../../assets/WhatsApp Image 2026-04-25 at 19.44.39.jpeg')}
+                  style={styles.avatarImage}
+                  resizeMode="cover"
+                />
               </View>
             </LinearGradient>
             <View style={styles.avatarBadge}>
@@ -52,7 +53,7 @@ export function ProfileScreen({ activeTab = 'profile', onTabChange, onLogout }: 
             </View>
           </View>
 
-          <Text style={styles.displayName}>Ariel Estelar</Text>
+          <Text style={styles.displayName}>Luznat</Text>
 
           <View style={styles.statusPill}>
             <View style={styles.statusDot} />
