@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { CosmicLogoMark } from './CosmicLogoMark';
 import { colors } from '../theme/colors';
@@ -7,16 +7,32 @@ const HEADER_BRAND_TITLE = 'Andrômeda';
 
 type CosmicHeaderProps = {
   profileInitials?: string;
+  onBack?: () => void;
+  onSharePress?: () => void;
 };
 
-export function CosmicHeader({ profileInitials = 'VS' }: CosmicHeaderProps) {
+export function CosmicHeader({ profileInitials = 'VS', onBack, onSharePress }: CosmicHeaderProps) {
   return (
     <View style={styles.topBar}>
-      <View style={styles.brandRow}>
-        <CosmicLogoMark size={26} iconScale={0.46} ringInset={0.2} />
-        <Text style={styles.brandText}>{HEADER_BRAND_TITLE}</Text>
+      <View style={styles.leftCluster}>
+        {onBack ? (
+          <Pressable style={styles.backButton} onPress={onBack} accessibilityLabel="Voltar">
+            <MaterialIcons name="arrow-back-ios-new" size={18} color={colors.textSecondary} />
+          </Pressable>
+        ) : null}
+        <View style={styles.brandRow}>
+          <CosmicLogoMark size={26} iconScale={0.46} ringInset={0.2} />
+          <Text style={styles.brandText} numberOfLines={1}>
+            {HEADER_BRAND_TITLE}
+          </Text>
+        </View>
       </View>
       <View style={styles.topActions}>
+        {onSharePress ? (
+          <Pressable onPress={onSharePress} accessibilityLabel="Compartilhar">
+            <MaterialIcons name="share" size={20} style={styles.topAction} />
+          </Pressable>
+        ) : null}
         <MaterialIcons name="notifications-none" size={20} style={styles.topAction} />
         <View style={styles.avatarPlaceholder}>
           <Text style={styles.avatarText}>{profileInitials}</Text>
@@ -31,11 +47,28 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    gap: 8,
+  },
+  leftCluster: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    flex: 1,
+    minWidth: 0,
+  },
+  backButton: {
+    width: 40,
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 2,
   },
   brandRow: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
+    flexShrink: 1,
+    minWidth: 0,
   },
   brandText: {
     color: colors.secondary,

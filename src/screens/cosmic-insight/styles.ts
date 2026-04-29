@@ -1,0 +1,280 @@
+import { StyleSheet } from 'react-native';
+import { colors } from '../../theme/colors';
+
+const HERO_H = 420;
+
+export const fonts = {
+  display: 'NotoSerif_700Bold',
+  displayRegular: 'NotoSerif_400Regular',
+  body: 'Manrope_400Regular',
+  bodyMedium: 'Manrope_500Medium',
+  bodySemi: 'Manrope_600SemiBold',
+  bodyBold: 'Manrope_700Bold',
+} as const;
+
+export const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+    backgroundColor: colors.background,
+  },
+  loadingRoot: {
+    flex: 1,
+    backgroundColor: colors.background,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  scroll: {
+    flex: 1,
+    zIndex: 5,
+  },
+  scrollContent: {
+    paddingBottom: 48,
+    paddingHorizontal: 20,
+  },
+  headerSlot: {
+    paddingTop: 14,
+    paddingBottom: 8,
+  },
+  heroSection: {
+    height: HERO_H,
+    width: '100%',
+    overflow: 'hidden',
+  },
+  heroImage: {
+    ...StyleSheet.absoluteFillObject,
+    width: '100%',
+    height: '100%',
+  },
+  heroGradient: {
+    ...StyleSheet.absoluteFillObject,
+  },
+  heroBottom: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    paddingHorizontal: 4,
+    paddingBottom: 36,
+    zIndex: 3,
+    gap: 10,
+  },
+  kickerRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    gap: 6,
+    marginBottom: 4,
+  },
+  kickerText: {
+    fontFamily: fonts.bodySemi,
+    color: colors.secondary,
+    fontSize: 11,
+    letterSpacing: 2,
+    textTransform: 'uppercase',
+  },
+  kickerSep: {
+    color: colors.textPrimary,
+    opacity: 0.28,
+    fontFamily: fonts.bodyMedium,
+    fontSize: 11,
+  },
+  heroTitle: {
+    fontFamily: fonts.display,
+    color: colors.textPrimary,
+    fontSize: 44,
+    lineHeight: 48,
+    letterSpacing: -1,
+  },
+  canvas: {
+    marginTop: -28,
+    gap: 28,
+    zIndex: 5,
+  },
+  bento: {
+    borderRadius: 14,
+    backgroundColor: colors.surface,
+    paddingVertical: 28,
+    paddingHorizontal: 22,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 12 },
+    shadowOpacity: 0.35,
+    shadowRadius: 24,
+    elevation: 12,
+  },
+  sectionTitle: {
+    fontFamily: fonts.display,
+    color: colors.primary,
+    fontSize: 26,
+    marginBottom: 20,
+  },
+  paragraph: {
+    fontFamily: fonts.body,
+    color: '#ccc4d1',
+    fontSize: 17,
+    lineHeight: 28,
+    marginBottom: 20,
+  },
+  paragraphLast: {
+    marginBottom: 0,
+  },
+  splitRow: {
+    flexDirection: 'column',
+    gap: 22,
+  },
+  splitRowWide: {
+    flexDirection: 'row',
+  },
+  splitCol: {
+    flex: 1,
+    minWidth: 0,
+  },
+  moonCard: {
+    borderRadius: 14,
+    backgroundColor: colors.surfaceLow,
+    padding: 22,
+    borderLeftWidth: 4,
+    borderLeftColor: 'rgba(214, 186, 255, 0.22)',
+  },
+  moonHeaderRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 14,
+    marginBottom: 18,
+  },
+  moonTitle: {
+    fontFamily: fonts.display,
+    color: colors.textPrimary,
+    fontSize: 22,
+    flex: 1,
+  },
+  moonPhase: {
+    fontFamily: fonts.bodyMedium,
+    color: '#ccc4d1',
+    fontSize: 14,
+    marginBottom: 12,
+  },
+  moonBody: {
+    fontFamily: fonts.body,
+    color: 'rgba(221, 225, 255, 0.82)',
+    fontSize: 15,
+    lineHeight: 24,
+  },
+  transitCard: {
+    borderRadius: 14,
+    backgroundColor: colors.surfaceLow,
+    padding: 22,
+  },
+  transitTitle: {
+    fontFamily: fonts.display,
+    color: colors.textPrimary,
+    fontSize: 22,
+    marginBottom: 18,
+  },
+  transitItem: {
+    flexDirection: 'row',
+    gap: 14,
+    marginBottom: 20,
+  },
+  transitItemLast: {
+    marginBottom: 0,
+  },
+  transitLabel: {
+    fontFamily: fonts.bodyBold,
+    fontSize: 11,
+    letterSpacing: 0.6,
+    textTransform: 'uppercase',
+    marginBottom: 4,
+  },
+  transitDesc: {
+    fontFamily: fonts.body,
+    color: '#ccc4d1',
+    fontSize: 13,
+    lineHeight: 20,
+  },
+  oracleOuter: {
+    borderRadius: 14,
+    padding: 2,
+    overflow: 'hidden',
+  },
+  oracleInner: {
+    borderRadius: 12,
+    backgroundColor: colors.surfaceMuted,
+    paddingVertical: 26,
+    paddingHorizontal: 22,
+    gap: 20,
+  },
+  oracleRow: {
+    flexDirection: 'column',
+    gap: 22,
+    alignItems: 'stretch',
+  },
+  oracleRowWide: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  oracleImageWrap: {
+    width: '100%',
+    maxWidth: 220,
+    alignSelf: 'center',
+    aspectRatio: 2 / 3,
+    borderRadius: 10,
+    overflow: 'hidden',
+    backgroundColor: colors.surfaceLow,
+    shadowColor: colors.secondary,
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.25,
+    shadowRadius: 20,
+    elevation: 8,
+  },
+  oracleImageWrapWide: {
+    width: 200,
+    maxWidth: 200,
+    alignSelf: 'center',
+  },
+  oracleImage: {
+    width: '100%',
+    height: '100%',
+  },
+  oracleCopy: {
+    flex: 1,
+    gap: 14,
+    minWidth: 0,
+  },
+  oracleEyebrow: {
+    fontFamily: fonts.bodyBold,
+    color: colors.secondary,
+    fontSize: 11,
+    letterSpacing: 2.4,
+    textTransform: 'uppercase',
+  },
+  oracleTitle: {
+    fontFamily: fonts.display,
+    color: colors.textPrimary,
+    fontSize: 32,
+    marginTop: 4,
+  },
+  oracleQuote: {
+    fontFamily: fonts.body,
+    color: '#ccc4d1',
+    fontSize: 17,
+    lineHeight: 28,
+    fontStyle: 'italic',
+  },
+  oracleCta: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+    alignSelf: 'flex-start',
+    backgroundColor: colors.secondary,
+    paddingHorizontal: 26,
+    paddingVertical: 12,
+    borderRadius: 999,
+  },
+  oracleCtaText: {
+    fontFamily: fonts.bodyBold,
+    color: colors.onSecondary,
+    fontSize: 13,
+    letterSpacing: 0.3,
+  },
+});

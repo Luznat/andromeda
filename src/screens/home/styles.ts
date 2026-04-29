@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { colors } from '../../theme/colors';
 
-export const styles = StyleSheet.create({
+const baseStyles = StyleSheet.create({
   root: {
     flex: 1,
     backgroundColor: colors.surfaceScrim,
@@ -128,17 +128,25 @@ export const styles = StyleSheet.create({
     padding: 14,
     flexDirection: 'row',
     gap: 14,
+    alignItems: 'stretch',
     borderWidth: 1,
     borderColor: colors.outlineVariant,
   },
+  featuredThumbColumn: {
+    alignItems: 'center',
+    gap: 6,
+    justifyContent: 'flex-start',
+  },
   featuredMedia: {
-    width: 92,
+    width: 108,
+    height: 136,
     borderRadius: 18,
     backgroundColor: colors.surfaceMuted,
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    paddingBottom: 10,
-    paddingHorizontal: 8,
+    overflow: 'hidden',
+  },
+  featuredThumbImage: {
+    width: '100%',
+    height: '100%',
   },
   featuredRate: {
     color: colors.onSecondary,
@@ -192,3 +200,5 @@ export const styles = StyleSheet.create({
     borderRadius: 8,
   },
 });
+
+export const styles = baseStyles;

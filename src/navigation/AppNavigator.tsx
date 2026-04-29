@@ -1,13 +1,16 @@
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import type { CosmicTabId } from '../components/CosmicBottomNav';
+import { getCosmicInsightById } from '../data/cosmicInsights';
 import { HomeScreen } from '../screens/home';
+import { CosmicInsightScreen } from '../screens/cosmic-insight';
 import { LoginScreen } from '../screens/login';
 import { ProfileScreen } from '../screens/profile';
 import { ProfessionalServiceScreen } from '../screens/professional-service';
 import { ReadingsScreen } from '../screens/readings';
 import { SearchScreen } from '../screens/search';
 import { SplashScreen } from '../screens/splash';
+import type { CosmicInsight } from '../types/cosmicInsight';
 import type { ProfessionalService } from '../types/professionalService';
 
 type AppRoute = 'splash' | 'login' | 'app';
@@ -19,6 +22,7 @@ export function AppNavigator() {
   const [currentRoute, setCurrentRoute] = useState<AppRoute>(INITIAL_APP_ROUTE);
   const [activeTab, setActiveTab] = useState<CosmicTabId>('home');
   const [selectedService, setSelectedService] = useState<ProfessionalService | null>(null);
+  const [insight, setInsight] = useState<CosmicInsight | null>(null);
 
   if (currentRoute === 'splash') {
     return (
@@ -31,6 +35,14 @@ export function AppNavigator() {
 
   if (currentRoute === 'login') {
     return <LoginScreen onLogin={() => setCurrentRoute('app')} />;
+  }
+
+  if (insight) {
+    return (
+      <View style={styles.appShell}>
+        <CosmicInsightScreen insight={insight} onBack={() => setInsight(null)} />
+      </View>
+    );
   }
 
   if (selectedService) {
@@ -50,11 +62,24 @@ export function AppNavigator() {
         <ReadingsScreen
           activeTab={activeTab}
           onTabChange={setActiveTab}
-          onOpenService={(service) => setSelectedService(service)}
+          onOpenService={(service) => {
+            setInsight(null);
+            setSelectedService(service);
+          }}
         />
       )}
       {activeTab === 'home' && (
-        <HomeScreen activeTab={activeTab} onTabChange={setActiveTab} />
+        <HomeScreen
+          activeTab={activeTab}
+          onTabChange={setActiveTab}
+          onOpenInsight={(id) => {
+            const next = getCosmicInsightById(id);
+            if (next) {
+              setSelectedService(null);
+              setInsight(next);
+            }
+          }}
+        />
       )}
       {activeTab === 'profile' && (
         <ProfileScreen

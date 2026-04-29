@@ -1,4 +1,5 @@
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import type { ImageSourcePropType } from 'react-native';
+import { Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import type { CosmicTabId } from '../../components/CosmicBottomNav';
 import { CosmicBottomNav } from '../../components/CosmicBottomNav';
@@ -13,9 +14,21 @@ const BOTTOM_BAR_CLEARANCE = 64;
 const HERO_NEBULA_URI =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuCQYeomCl1-uyFKB_INho71Xe5gxNZsWiPuByOwT8UrwqkW7R5iZr8QAQdyBLeqKfjdcOPy6RxnFQv9ndni9bq14t4CkOsPluyJ6AGtl4pt2xR53-w-MfCdOZUx9yEmlAHKE87FEp4Z4vvdF-vRWnSYjTvsEqJBsSbpIMeTMh-PG3FfIs1n3ChMLrLTJaZWrmjs1FmLSaYB39u00lGbFD6dvyPIYkVGe9EFnmqXLViB72jJcHhWIeX_O7TsyR5tezY-aCYmsvxRosA';
 
-const featuredReadings = [
+type FeaturedReading = {
+  id: string;
+  image: ImageSourcePropType;
+  badge: string;
+  title: string;
+  description: string;
+  price: string;
+  duration: string;
+  rate: string;
+};
+
+const featuredReadings: FeaturedReading[] = [
   {
     id: '1',
+    image: require('../../../assets/featured-tarot-amor.jpg'),
     badge: 'Mais Procurada',
     title: 'Leitura de Tarot Amoroso',
     description: 'Descubra os caminhos do coração com clareza, sensibilidade e destino.',
@@ -25,6 +38,7 @@ const featuredReadings = [
   },
   {
     id: '2',
+    image: require('../../../assets/screen.png'),
     badge: 'Especial Semanal',
     title: 'Buzios da Prosperidade',
     description: 'Abra caminhos financeiros com a sabedoria ancestral das conchas sagradas.',
@@ -37,9 +51,10 @@ const featuredReadings = [
 type HomeScreenProps = {
   activeTab?: CosmicTabId;
   onTabChange?: (id: CosmicTabId) => void;
+  onOpenInsight?: (insightId: string) => void;
 };
 
-export function HomeScreen({ activeTab = 'home', onTabChange }: HomeScreenProps) {
+export function HomeScreen({ activeTab = 'home', onTabChange, onOpenInsight }: HomeScreenProps) {
   return (
     <View style={styles.root}>
       <CosmicScreenBackground variant="deepTop" />
@@ -53,7 +68,12 @@ export function HomeScreen({ activeTab = 'home', onTabChange }: HomeScreenProps)
       >
         <CosmicHeader />
 
-        <View style={styles.hero}>
+        <Pressable
+          style={styles.hero}
+          onPress={() => onOpenInsight?.('home-daily')}
+          accessibilityRole="button"
+          accessibilityLabel="Abrir previsão do dia"
+        >
           <Image
             source={{ uri: HERO_NEBULA_URI }}
             style={styles.heroImage}
@@ -75,30 +95,22 @@ export function HomeScreen({ activeTab = 'home', onTabChange }: HomeScreenProps)
               <Text style={styles.heroTagPrimary}>Portal Aberto</Text>
             </View>
           </View>
-        </View>
-
-        <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>Oráculos e Artes</Text>
-          <Text style={styles.sectionAction}>Ver todos</Text>
-        </View>
-
-        <View style={styles.categoryGrid}>
-          {ORACLE_CATEGORIES.map((category) => (
-            <View key={category.id} style={styles.categoryCard}>
-              <View style={styles.categoryIconWrap}>
-                <Text style={styles.categoryIcon}>{category.icon}</Text>
-              </View>
-              <Text style={styles.categoryLabel}>{category.label}</Text>
-            </View>
-          ))}
-        </View>
+        </Pressable>
 
         <Text style={styles.sectionTitle}>Recomendados pela galáxia</Text>
 
         <View style={styles.featuredList}>
           {featuredReadings.map((item) => (
             <View key={item.id} style={styles.featuredCard}>
-              <View style={styles.featuredMedia}>
+              <View style={styles.featuredThumbColumn}>
+                <View style={styles.featuredMedia}>
+                  <Image
+                    source={item.image}
+                    style={styles.featuredThumbImage}
+                    resizeMode="cover"
+                    accessibilityLabel={`Ilustração: ${item.title}`}
+                  />
+                </View>
                 <Text style={styles.featuredRate}>★ {item.rate}</Text>
               </View>
               <View style={styles.featuredContent}>
@@ -110,6 +122,21 @@ export function HomeScreen({ activeTab = 'home', onTabChange }: HomeScreenProps)
                   <Text style={styles.featuredDuration}>{item.duration}</Text>
                 </View>
               </View>
+            </View>
+          ))}
+        </View>
+
+        <View style={styles.sectionHeader}>
+          <Text style={styles.sectionTitle}>Oráculos e Artes</Text>
+        </View>
+
+        <View style={styles.categoryGrid}>
+          {ORACLE_CATEGORIES.map((category) => (
+            <View key={category.id} style={styles.categoryCard}>
+              <View style={styles.categoryIconWrap}>
+                <Text style={styles.categoryIcon}>{category.icon}</Text>
+              </View>
+              <Text style={styles.categoryLabel}>{category.label}</Text>
             </View>
           ))}
         </View>
