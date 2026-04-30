@@ -1,8 +1,8 @@
-import { useEffect, useRef } from 'react';
-import { Animated, Easing, Image, Pressable, ScrollView, Text, View } from 'react-native';
+import { Image, Pressable, ScrollView, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { CosmicHeader } from '../../components/CosmicHeader';
+import { CosmicAura } from '../../components/cosmic/CosmicAura';
 import { CosmicScreenBackground } from '../../components/cosmic/CosmicScreenBackground';
 import type { ProfessionalService } from '../../types/professionalService';
 import { colors } from '../../theme/colors';
@@ -15,7 +15,7 @@ type ProfessionalServiceScreenProps = {
 
 export function ProfessionalServiceScreen({ service, onBack }: ProfessionalServiceScreenProps) {
   const isPremium = service.isPremium === true;
-  const haloProgress = useRef(new Animated.Value(0)).current;
+  const premiumAuraColors = ['#00000000', '#FFE9A6', '#E9C349', '#D6BAFF', '#00000000'];
   const scheduleItems = [
     { day: 'Hoje', time: '18:30 ás 20:00' },
     { day: 'Amanha', time: '09:00 ás 14:15' },
@@ -48,37 +48,6 @@ export function ProfessionalServiceScreen({ service, onBack }: ProfessionalServi
     { id: 's5', icon: 'psychology', label: 'Autoconhecimento' },
   ];
 
-  useEffect(() => {
-    if (!isPremium) {
-      haloProgress.setValue(0);
-      return;
-    }
-
-    const loop = Animated.loop(
-      Animated.timing(haloProgress, {
-        toValue: 1,
-        duration: 10000,
-        easing: Easing.linear,
-        useNativeDriver: true,
-      }),
-    );
-
-    loop.start();
-
-    return () => {
-      loop.stop();
-      haloProgress.setValue(0);
-    };
-  }, [haloProgress, isPremium]);
-
-  const haloScale = haloProgress.interpolate({
-    inputRange: [0, 0.5, 1],
-    outputRange: [1, 1.08, 1],
-  });
-  const haloOpacity = haloProgress.interpolate({
-    inputRange: [0, 0.5, 1],
-    outputRange: [0.3, 0.65, 0.3],
-  });
   const profileImageSource = service.profileImageSource ?? { uri: service.image };
   const profileInitials = service.professionalName
     .split(' ')
@@ -95,21 +64,7 @@ export function ProfessionalServiceScreen({ service, onBack }: ProfessionalServi
 
         <View style={styles.profileSection}>
           <View style={styles.avatarWrap}>
-            {isPremium && (
-              <Animated.View
-                pointerEvents="none"
-                style={[
-                  styles.premiumHalo,
-                  {
-                    opacity: haloOpacity,
-                    transform: [{ scale: haloScale }],
-                  },
-                ]}
-              >
-                <View style={styles.premiumHaloOuter} />
-                <View style={styles.premiumHaloInner} />
-              </Animated.View>
-            )}
+            {isPremium && <CosmicAura size={200} isActive={isPremium} colors={premiumAuraColors} />}
             <LinearGradient
               colors={[colors.secondary, colors.primary, colors.secondaryContainer]}
               start={{ x: 0, y: 0 }}

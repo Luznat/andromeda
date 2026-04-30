@@ -81,27 +81,6 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  premiumHalo: {
-    position: 'absolute',
-    width: 194,
-    height: 194,
-    borderRadius: 97,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  premiumHaloOuter: {
-    position: 'absolute',
-    width: 194,
-    height: 194,
-    borderRadius: 97,
-    backgroundColor: 'rgba(233,195,73,0.08)',
-  },
-  premiumHaloInner: {
-    width: 170,
-    height: 170,
-    borderRadius: 85,
-    backgroundColor: 'rgba(233,195,73,0.14)',
-  },
   avatarFramePremium: {
     shadowColor: colors.secondary,
     shadowOpacity: 0.35,
