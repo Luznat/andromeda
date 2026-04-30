@@ -39,6 +39,7 @@ const featuredReadings: FeaturedReading[] = [
         'https://lh3.googleusercontent.com/aida-public/AB6AXuAVXP0a2w-brMgFJ-S05QepNmokGU123s23GxlTqm7csmFCbNoEwGsoMjSCHoWI5pPqhpyvBQ3ZZgoAS2_j_IKPLZF9nHsAKRcY4vPsWikk2ROlhIwxgymBrF6l5ls_oHr9dlhRYIo_uybA-tX33RQ0i_SvOVDAesYZ7daLxC3PWtpWimja4Y1KY4n-Z1eCK4BbpHDOLMCnojPuQxgMANSeYefoeZT3ztbANMMcq0BeuAwAPknSXVrCZLgulKovJ_Stw3VMRItaOZI',
       imageSource: require('../../../assets/featured-tarot-amor.jpg'),
       tags: ['Amor', 'Relacionamentos', 'Tarot'],
+      isPremium: true,
     },
   },
   {
@@ -58,6 +59,7 @@ const featuredReadings: FeaturedReading[] = [
         'https://lh3.googleusercontent.com/aida-public/AB6AXuACgtIFQMRClRB7yTisEsr61Hx6oPNrVluPWRsjJOmftrLFq3jPXtLwcA8TrBF6QCYPvyyWH6MrqxmmJsKq0edoyQPvbdBB__NDI98N7awpgqzE7EvUpPfLzM8HcXMjq3mSQF9mbDP-BmNiVXTzLSYmPDHdFv0G4EnxUik44MaVgwnWTPysrggh-GJ3VWHzKS6l0qkF4uUVNwGmO6_5PJom6j5U9fIlMthmpaqjcXsLvacPOEUDeznZT_Wec1ZEsnS2BIIZlHDmPaA',
       imageSource: require('../../../assets/screen.png'),
       tags: ['Prosperidade', 'Carreira', 'Buzios'],
+      isPremium: true,
     },
   },
 ];

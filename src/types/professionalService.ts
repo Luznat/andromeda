@@ -9,4 +9,5 @@ export type ProfessionalService = {
   rating: string;
   image: string;
   tags: string[];
+  isPremium?: boolean;
 };

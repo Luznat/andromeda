@@ -22,6 +22,11 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+  topBarPremium: {
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(233,195,73,0.16)',
+    paddingBottom: 6,
+  },
   topBarButton: {
     width: 36,
     height: 36,
@@ -37,9 +42,31 @@ export const styles = StyleSheet.create({
     fontStyle: 'italic',
     letterSpacing: 1.5,
   },
+  topBarTitlePremium: {
+    letterSpacing: 2.6,
+    textTransform: 'uppercase',
+  },
   profileSection: {
     alignItems: 'center',
     gap: 10,
+  },
+  premiumBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    borderRadius: 999,
+    borderWidth: 1,
+    borderColor: 'rgba(233,195,73,0.32)',
+    backgroundColor: 'rgba(233,195,73,0.08)',
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+  },
+  premiumBadgeText: {
+    color: colors.secondary,
+    textTransform: 'uppercase',
+    letterSpacing: 1.2,
+    fontSize: 10,
+    fontWeight: '700',
   },
 
   avatarFrame: {
@@ -47,6 +74,40 @@ export const styles = StyleSheet.create({
     height: 150,
     borderRadius: 75,
     padding: 4,
+  },
+  avatarWrap: {
+    width: 170,
+    height: 170,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  premiumHalo: {
+    position: 'absolute',
+    width: 194,
+    height: 194,
+    borderRadius: 97,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  premiumHaloOuter: {
+    position: 'absolute',
+    width: 194,
+    height: 194,
+    borderRadius: 97,
+    backgroundColor: 'rgba(233,195,73,0.08)',
+  },
+  premiumHaloInner: {
+    width: 170,
+    height: 170,
+    borderRadius: 85,
+    backgroundColor: 'rgba(233,195,73,0.14)',
+  },
+  avatarFramePremium: {
+    shadowColor: colors.secondary,
+    shadowOpacity: 0.35,
+    shadowRadius: 22,
+    shadowOffset: { width: 0, height: 8 },
+    elevation: 10,
   },
   avatarFrameInner: {
     width: '100%',
@@ -68,6 +129,10 @@ export const styles = StyleSheet.create({
     fontWeight: '700',
     textAlign: 'center',
   },
+  namePremium: {
+    color: colors.secondary,
+    fontSize: 38,
+  },
   ratingRow: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -86,6 +151,11 @@ export const styles = StyleSheet.create({
     textTransform: 'uppercase',
     letterSpacing: 1.3,
   },
+  specialtyPremium: {
+    color: colors.secondary,
+    fontSize: 10,
+    letterSpacing: 1.8,
+  },
   sectionBlock: {
     gap: 14,
   },
@@ -93,6 +163,9 @@ export const styles = StyleSheet.create({
     color: colors.secondary,
     fontSize: 24,
     fontWeight: '700',
+  },
+  sectionTitlePremium: {
+    letterSpacing: 1.2,
   },
   aboutRow: {
     gap: 14,
@@ -107,6 +180,10 @@ export const styles = StyleSheet.create({
     borderColor: 'rgba(74,69,80,0.35)',
     padding: 14,
     gap: 10,
+  },
+  scheduleCardPremium: {
+    borderColor: 'rgba(233,195,73,0.35)',
+    backgroundColor: 'rgba(25,30,53,0.92)',
   },
   scheduleTitle: {
     color: colors.primary,
@@ -247,16 +324,27 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     gap: 12,
   },
+  bottomCtaPremium: {
+    borderTopColor: 'rgba(233,195,73,0.32)',
+    backgroundColor: 'rgba(13, 18, 40, 0.94)',
+  },
   bottomCtaLabel: {
     color: colors.textSecondary,
     fontSize: 10,
     textTransform: 'uppercase',
     letterSpacing: 1,
   },
+  bottomCtaLabelPremium: {
+    color: colors.secondary,
+    letterSpacing: 1.6,
+  },
   bottomCtaPrice: {
     color: colors.textPrimary,
     fontSize: 20,
     fontWeight: '700',
+  },
+  bottomCtaPricePremium: {
+    color: colors.secondary,
   },
   bottomCtaPriceSmall: {
     color: colors.textSecondary,
@@ -271,6 +359,13 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 7,
+  },
+  reserveButtonPremium: {
+    shadowColor: colors.secondary,
+    shadowOpacity: 0.5,
+    shadowRadius: 16,
+    shadowOffset: { width: 0, height: 8 },
+    elevation: 8,
   },
   reserveButtonText: {
     color: colors.onSecondary,
