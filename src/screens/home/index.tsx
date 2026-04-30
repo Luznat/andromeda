@@ -1,4 +1,3 @@
-import type { ImageSourcePropType } from 'react-native';
 import { Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import type { CosmicTabId } from '../../components/CosmicBottomNav';
@@ -18,7 +17,7 @@ const HERO_NEBULA_URI =
 type FeaturedReading = {
   badge: string;
   rate: string;
-  service: ProfessionalService & { imageSource: ImageSourcePropType };
+  service: ProfessionalService;
 };
 
 const featuredReadings: FeaturedReading[] = [
@@ -37,7 +36,7 @@ const featuredReadings: FeaturedReading[] = [
       rating: '4.9',
       image:
         'https://lh3.googleusercontent.com/aida-public/AB6AXuAVXP0a2w-brMgFJ-S05QepNmokGU123s23GxlTqm7csmFCbNoEwGsoMjSCHoWI5pPqhpyvBQ3ZZgoAS2_j_IKPLZF9nHsAKRcY4vPsWikk2ROlhIwxgymBrF6l5ls_oHr9dlhRYIo_uybA-tX33RQ0i_SvOVDAesYZ7daLxC3PWtpWimja4Y1KY4n-Z1eCK4BbpHDOLMCnojPuQxgMANSeYefoeZT3ztbANMMcq0BeuAwAPknSXVrCZLgulKovJ_Stw3VMRItaOZI',
-      imageSource: require('../../../assets/featured-tarot-amor.jpg'),
+      profileImageSource: require('../../../assets/featured-tarot-amor.jpg'),
       tags: ['Amor', 'Relacionamentos', 'Tarot'],
       isPremium: true,
     },
@@ -57,7 +56,7 @@ const featuredReadings: FeaturedReading[] = [
       rating: '5.0',
       image:
         'https://lh3.googleusercontent.com/aida-public/AB6AXuACgtIFQMRClRB7yTisEsr61Hx6oPNrVluPWRsjJOmftrLFq3jPXtLwcA8TrBF6QCYPvyyWH6MrqxmmJsKq0edoyQPvbdBB__NDI98N7awpgqzE7EvUpPfLzM8HcXMjq3mSQF9mbDP-BmNiVXTzLSYmPDHdFv0G4EnxUik44MaVgwnWTPysrggh-GJ3VWHzKS6l0qkF4uUVNwGmO6_5PJom6j5U9fIlMthmpaqjcXsLvacPOEUDeznZT_Wec1ZEsnS2BIIZlHDmPaA',
-      imageSource: require('../../../assets/screen.png'),
+      profileImageSource: require('../../../assets/screen.png'),
       tags: ['Prosperidade', 'Carreira', 'Buzios'],
       isPremium: true,
     },
@@ -133,7 +132,7 @@ export function HomeScreen({
               <View style={styles.featuredThumbColumn}>
                 <View style={styles.featuredMedia}>
                   <Image
-                    source={item.service.imageSource}
+                    source={item.service.profileImageSource ?? { uri: item.service.image }}
                     style={styles.featuredThumbImage}
                     resizeMode="cover"
                     accessibilityLabel={`Ilustracao: ${item.service.specialty}`}

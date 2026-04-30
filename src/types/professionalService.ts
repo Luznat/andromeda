@@ -1,3 +1,5 @@
+import type { ImageSourcePropType } from 'react-native';
+
 export type ProfessionalService = {
   id: string;
   professionalName: string;
@@ -8,6 +10,7 @@ export type ProfessionalService = {
   duration: string;
   rating: string;
   image: string;
+  profileImageSource?: ImageSourcePropType;
   tags: string[];
   isPremium?: boolean;
 };

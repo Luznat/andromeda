@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { Animated, Easing, Image, Pressable, ScrollView, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { CosmicHeader } from '../../components/CosmicHeader';
 import { CosmicScreenBackground } from '../../components/cosmic/CosmicScreenBackground';
 import type { ProfessionalService } from '../../types/professionalService';
 import { colors } from '../../theme/colors';
@@ -78,26 +79,19 @@ export function ProfessionalServiceScreen({ service, onBack }: ProfessionalServi
     inputRange: [0, 0.5, 1],
     outputRange: [0.3, 0.65, 0.3],
   });
+  const profileImageSource = service.profileImageSource ?? { uri: service.image };
+  const profileInitials = service.professionalName
+    .split(' ')
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase())
+    .join('');
 
   return (
     <View style={styles.root}>
       <CosmicScreenBackground variant="deepTop" />
       <ScrollView style={styles.scroll} contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-        <View style={[styles.topBar, isPremium && styles.topBarPremium]}>
-          <Pressable style={styles.topBarButton} onPress={onBack} accessibilityLabel="Voltar para servicos">
-            <MaterialIcons name="arrow-back-ios-new" size={18} color={colors.textSecondary} />
-          </Pressable>
-          <Text style={[styles.topBarTitle, isPremium && styles.topBarTitlePremium]}>
-            {isPremium ? 'Andromeda Elite' : 'Detalhes do Servico'}
-          </Text>
-          <Pressable style={styles.topBarButton} accessibilityLabel="Compartilhar perfil">
-            <MaterialIcons
-              name={isPremium ? 'workspace-premium' : 'share'}
-              size={18}
-              color={colors.textSecondary}
-            />
-          </Pressable>
-        </View>
+        <CosmicHeader onBack={onBack} onSharePress={() => undefined} profileInitials={profileInitials} />
 
         <View style={styles.profileSection}>
           <View style={styles.avatarWrap}>
@@ -123,7 +117,7 @@ export function ProfessionalServiceScreen({ service, onBack }: ProfessionalServi
               style={[styles.avatarFrame, isPremium && styles.avatarFramePremium]}
             >
               <View style={styles.avatarFrameInner}>
-                <Image source={{ uri: service.image }} style={styles.avatarImage} resizeMode="cover" />
+                <Image source={profileImageSource} style={styles.avatarImage} resizeMode="cover" />
               </View>
             </LinearGradient>
           </View>
