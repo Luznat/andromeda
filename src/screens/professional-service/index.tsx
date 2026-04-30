@@ -49,10 +49,10 @@ export function ProfessionalServiceScreen({ service, onBack }: ProfessionalServi
       <CosmicScreenBackground variant="deepTop" />
       <ScrollView style={styles.scroll} contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.topBar}>
-          <Pressable style={styles.topBarButton} onPress={onBack} accessibilityLabel="Voltar para leituras">
+          <Pressable style={styles.topBarButton} onPress={onBack} accessibilityLabel="Voltar para servicos">
             <MaterialIcons name="arrow-back-ios-new" size={18} color={colors.textSecondary} />
           </Pressable>
-          <Text style={styles.topBarTitle}>Andromeda</Text>
+          <Text style={styles.topBarTitle}>Detalhes do Servico</Text>
           <Pressable style={styles.topBarButton} accessibilityLabel="Compartilhar perfil">
             <MaterialIcons name="share" size={18} color={colors.textSecondary} />
           </Pressable>
@@ -69,7 +69,7 @@ export function ProfessionalServiceScreen({ service, onBack }: ProfessionalServi
               <Image source={{ uri: service.image }} style={styles.avatarImage} resizeMode="cover" />
             </View>
           </LinearGradient>
-          <Text style={styles.name}>{service.professionalName}</Text>
+          <Text style={styles.name}>{service.specialty}</Text>
           <View style={styles.ratingRow}>
             <MaterialIcons name="star" size={18} color={colors.secondary} />
             <MaterialIcons name="star" size={18} color={colors.secondary} />
@@ -78,12 +78,12 @@ export function ProfessionalServiceScreen({ service, onBack }: ProfessionalServi
             <MaterialIcons name="star-half" size={18} color={colors.secondary} />
             <Text style={styles.ratingMeta}>{service.rating} (128 atendimentos)</Text>
           </View>
-          <Text style={styles.specialty}>{service.specialty}</Text>
+          <Text style={styles.specialty}>Com {service.professionalName}</Text>
         </View>
 
         <View style={styles.aboutRow}>
           <View style={styles.aboutMain}>
-            <Text style={styles.sectionTitle}>Sobre a Consultora</Text>
+            <Text style={styles.sectionTitle}>Sobre o Servico</Text>
             <Text style={styles.description}>
               Minha jornada comecou sob o ceu estrelado do Atacama, onde aprendi a ouvir os sussurros do cosmos.
             </Text>
@@ -101,7 +101,7 @@ export function ProfessionalServiceScreen({ service, onBack }: ProfessionalServi
         </View>
 
         <View style={styles.sectionBlock}>
-          <Text style={styles.sectionTitle}>Especialidades</Text>
+          <Text style={styles.sectionTitle}>Temas Atendidos</Text>
           <View style={styles.specialtyGrid}>
             {specialties.map((item) => (
               <View
@@ -126,7 +126,7 @@ export function ProfessionalServiceScreen({ service, onBack }: ProfessionalServi
 
         <View style={styles.sectionBlock}>
           <View style={styles.reviewsHeader}>
-            <Text style={styles.sectionTitle}>Depoimentos</Text>
+            <Text style={styles.sectionTitle}>Avaliacoes do Servico</Text>
             <Text style={styles.seeAll}>Ver todos</Text>
           </View>
           {reviews.map((review) => (

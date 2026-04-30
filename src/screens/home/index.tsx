@@ -6,6 +6,7 @@ import { CosmicBottomNav } from '../../components/CosmicBottomNav';
 import { CosmicHeader } from '../../components/CosmicHeader';
 import { CosmicScreenBackground } from '../../components/cosmic/CosmicScreenBackground';
 import { ORACLE_CATEGORIES } from '../../data/oracleCategories';
+import type { ProfessionalService } from '../../types/professionalService';
 import { gradients } from '../../theme/colors';
 import { styles } from './styles';
 
@@ -15,36 +16,49 @@ const HERO_NEBULA_URI =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuCQYeomCl1-uyFKB_INho71Xe5gxNZsWiPuByOwT8UrwqkW7R5iZr8QAQdyBLeqKfjdcOPy6RxnFQv9ndni9bq14t4CkOsPluyJ6AGtl4pt2xR53-w-MfCdOZUx9yEmlAHKE87FEp4Z4vvdF-vRWnSYjTvsEqJBsSbpIMeTMh-PG3FfIs1n3ChMLrLTJaZWrmjs1FmLSaYB39u00lGbFD6dvyPIYkVGe9EFnmqXLViB72jJcHhWIeX_O7TsyR5tezY-aCYmsvxRosA';
 
 type FeaturedReading = {
-  id: string;
-  image: ImageSourcePropType;
   badge: string;
-  title: string;
-  description: string;
-  price: string;
-  duration: string;
   rate: string;
+  service: ProfessionalService & { imageSource: ImageSourcePropType };
 };
 
 const featuredReadings: FeaturedReading[] = [
   {
-    id: '1',
-    image: require('../../../assets/featured-tarot-amor.jpg'),
     badge: 'Mais Procurada',
-    title: 'Leitura de Tarot Amoroso',
-    description: 'Descubra os caminhos do coração com clareza, sensibilidade e destino.',
-    price: 'R$ 145',
-    duration: '30 minutos',
     rate: '4.9',
+    service: {
+      id: 'home-featured-1',
+      professionalName: 'Aurora Celeste',
+      specialty: 'Tarot Amoroso',
+      shortDescription: 'Descubra os caminhos do coracao com clareza, sensibilidade e destino.',
+      fullDescription:
+        'Uma sessao focada em relacionamentos, padroes emocionais e orientacao energetica para fortalecer a vida afetiva.',
+      price: 'R$ 145',
+      duration: '30 minutos',
+      rating: '4.9',
+      image:
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuAVXP0a2w-brMgFJ-S05QepNmokGU123s23GxlTqm7csmFCbNoEwGsoMjSCHoWI5pPqhpyvBQ3ZZgoAS2_j_IKPLZF9nHsAKRcY4vPsWikk2ROlhIwxgymBrF6l5ls_oHr9dlhRYIo_uybA-tX33RQ0i_SvOVDAesYZ7daLxC3PWtpWimja4Y1KY4n-Z1eCK4BbpHDOLMCnojPuQxgMANSeYefoeZT3ztbANMMcq0BeuAwAPknSXVrCZLgulKovJ_Stw3VMRItaOZI',
+      imageSource: require('../../../assets/featured-tarot-amor.jpg'),
+      tags: ['Amor', 'Relacionamentos', 'Tarot'],
+    },
   },
   {
-    id: '2',
-    image: require('../../../assets/screen.png'),
     badge: 'Especial Semanal',
-    title: 'Buzios da Prosperidade',
-    description: 'Abra caminhos financeiros com a sabedoria ancestral das conchas sagradas.',
-    price: 'R$ 180',
-    duration: '45 minutos',
     rate: '5.0',
+    service: {
+      id: 'home-featured-2',
+      professionalName: 'Mestre Orion',
+      specialty: 'Buzios da Prosperidade',
+      shortDescription: 'Abra caminhos financeiros com a sabedoria ancestral das conchas sagradas.',
+      fullDescription:
+        'Consulta dedicada a prosperidade, carreira e direcionamento pratico para ciclos de crescimento financeiro.',
+      price: 'R$ 180',
+      duration: '45 minutos',
+      rating: '5.0',
+      image:
+        'https://lh3.googleusercontent.com/aida-public/AB6AXuACgtIFQMRClRB7yTisEsr61Hx6oPNrVluPWRsjJOmftrLFq3jPXtLwcA8TrBF6QCYPvyyWH6MrqxmmJsKq0edoyQPvbdBB__NDI98N7awpgqzE7EvUpPfLzM8HcXMjq3mSQF9mbDP-BmNiVXTzLSYmPDHdFv0G4EnxUik44MaVgwnWTPysrggh-GJ3VWHzKS6l0qkF4uUVNwGmO6_5PJom6j5U9fIlMthmpaqjcXsLvacPOEUDeznZT_Wec1ZEsnS2BIIZlHDmPaA',
+      imageSource: require('../../../assets/screen.png'),
+      tags: ['Prosperidade', 'Carreira', 'Buzios'],
+    },
   },
 ];
 
@@ -52,9 +66,15 @@ type HomeScreenProps = {
   activeTab?: CosmicTabId;
   onTabChange?: (id: CosmicTabId) => void;
   onOpenInsight?: (insightId: string) => void;
+  onOpenService?: (service: ProfessionalService) => void;
 };
 
-export function HomeScreen({ activeTab = 'home', onTabChange, onOpenInsight }: HomeScreenProps) {
+export function HomeScreen({
+  activeTab = 'home',
+  onTabChange,
+  onOpenInsight,
+  onOpenService,
+}: HomeScreenProps) {
   return (
     <View style={styles.root}>
       <CosmicScreenBackground variant="deepTop" />
@@ -101,28 +121,34 @@ export function HomeScreen({ activeTab = 'home', onTabChange, onOpenInsight }: H
 
         <View style={styles.featuredList}>
           {featuredReadings.map((item) => (
-            <View key={item.id} style={styles.featuredCard}>
+            <Pressable
+              key={item.service.id}
+              style={styles.featuredCard}
+              onPress={() => onOpenService?.(item.service)}
+              accessibilityRole="button"
+              accessibilityLabel={`Abrir servico ${item.service.specialty}`}
+            >
               <View style={styles.featuredThumbColumn}>
                 <View style={styles.featuredMedia}>
                   <Image
-                    source={item.image}
+                    source={item.service.imageSource}
                     style={styles.featuredThumbImage}
                     resizeMode="cover"
-                    accessibilityLabel={`Ilustração: ${item.title}`}
+                    accessibilityLabel={`Ilustracao: ${item.service.specialty}`}
                   />
                 </View>
                 <Text style={styles.featuredRate}>★ {item.rate}</Text>
               </View>
               <View style={styles.featuredContent}>
                 <Text style={styles.featuredBadge}>{item.badge}</Text>
-                <Text style={styles.featuredTitle}>{item.title}</Text>
-                <Text style={styles.featuredDescription}>{item.description}</Text>
+                <Text style={styles.featuredTitle}>{item.service.specialty}</Text>
+                <Text style={styles.featuredDescription}>{item.service.shortDescription}</Text>
                 <View style={styles.featuredMeta}>
-                  <Text style={styles.featuredPrice}>{item.price}</Text>
-                  <Text style={styles.featuredDuration}>{item.duration}</Text>
+                  <Text style={styles.featuredPrice}>{item.service.price}</Text>
+                  <Text style={styles.featuredDuration}>{item.service.duration}</Text>
                 </View>
               </View>
-            </View>
+            </Pressable>
           ))}
         </View>
 

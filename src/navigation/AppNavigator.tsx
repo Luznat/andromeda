@@ -72,6 +72,10 @@ export function AppNavigator() {
         <HomeScreen
           activeTab={activeTab}
           onTabChange={setActiveTab}
+          onOpenService={(service) => {
+            setInsight(null);
+            setSelectedService(service);
+          }}
           onOpenInsight={(id) => {
             const next = getCosmicInsightById(id);
             if (next) {
