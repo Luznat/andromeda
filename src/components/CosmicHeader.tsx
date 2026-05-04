@@ -1,18 +1,21 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import type { ImageSourcePropType } from 'react-native';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { CosmicLogoMark } from './CosmicLogoMark';
 import { colors } from '../theme/colors';
 import { FONT_FAMILIES } from '../theme/fonts';
 
 const HEADER_BRAND_TITLE = 'Andrômeda';
+const DEFAULT_HEADER_AVATAR = require('../../assets/WhatsApp Image 2026-04-25 at 19.44.39.jpeg');
 
 type CosmicHeaderProps = {
-  profileInitials?: string;
+  /** Defaults to `assets/WhatsApp Image 2026-04-25 at 19.44.39.jpeg` when omitted. */
+  avatarSource?: ImageSourcePropType;
   onBack?: () => void;
   onSharePress?: () => void;
 };
 
-export function CosmicHeader({ profileInitials = 'VS', onBack, onSharePress }: CosmicHeaderProps) {
+export function CosmicHeader({ avatarSource, onBack, onSharePress }: CosmicHeaderProps) {
   return (
     <View style={styles.topBar}>
       <View style={styles.leftCluster}>
@@ -35,8 +38,14 @@ export function CosmicHeader({ profileInitials = 'VS', onBack, onSharePress }: C
           </Pressable>
         ) : null}
         <MaterialIcons name="notifications-none" size={20} style={styles.topAction} />
-        <View style={styles.avatarPlaceholder}>
-          <Text style={styles.avatarText}>{profileInitials}</Text>
+        <View style={styles.avatarRing}>
+          <Image
+            source={avatarSource ?? DEFAULT_HEADER_AVATAR}
+            style={styles.avatarImage}
+            resizeMode="cover"
+            accessibilityLabel="Foto de perfil"
+            accessibilityIgnoresInvertColors
+          />
         </View>
       </View>
     </View>
@@ -88,20 +97,17 @@ const styles = StyleSheet.create({
     color: colors.textSecondary,
     fontSize: 18,
   },
-  avatarPlaceholder: {
+  avatarRing: {
     width: 34,
     height: 34,
     borderRadius: 17,
+    overflow: 'hidden',
     backgroundColor: colors.surfaceMuted,
-    alignItems: 'center',
-    justifyContent: 'center',
     borderWidth: 1,
     borderColor: colors.outlineVariant,
   },
-  avatarText: {
-    color: colors.textPrimary,
-    fontWeight: '700',
-    fontSize: 12,
-    fontFamily: FONT_FAMILIES.bold,
+  avatarImage: {
+    width: '100%',
+    height: '100%',
   },
 });

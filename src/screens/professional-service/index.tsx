@@ -49,18 +49,12 @@ export function ProfessionalServiceScreen({ service, onBack }: ProfessionalServi
   ];
 
   const profileImageSource = service.profileImageSource ?? { uri: service.image };
-  const profileInitials = service.professionalName
-    .split(' ')
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((part) => part[0]?.toUpperCase())
-    .join('');
 
   return (
     <View style={styles.root}>
       <CosmicScreenBackground variant="deepTop" />
       <ScrollView style={styles.scroll} contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-        <CosmicHeader onBack={onBack} onSharePress={() => undefined} profileInitials={profileInitials} />
+        <CosmicHeader onBack={onBack} onSharePress={() => undefined} />
 
         <View style={styles.profileSection}>
           <View style={styles.avatarWrap}>
