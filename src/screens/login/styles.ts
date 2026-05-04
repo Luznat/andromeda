@@ -14,6 +14,12 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.background,
   },
+  backgroundImage: {
+    ...StyleSheet.absoluteFillObject,
+  },
+  backgroundOverlay: {
+    ...StyleSheet.absoluteFillObject,
+  },
   scroll: {
     flex: 1,
     zIndex: 5,
@@ -61,38 +67,40 @@ export const styles = StyleSheet.create({
   },
   ctaSection: {
     width: '100%',
-    maxWidth: 320,
+    maxWidth: 440,
     alignSelf: 'center',
   },
   ctaSectionGap: {
     marginTop: 32,
   },
-  submitButton: {
+  journeyCtaWrap: {
+    alignSelf: 'center',
+    maxWidth: '100%',
     borderRadius: 999,
-    backgroundColor: colors.secondary,
-    paddingVertical: 20,
-    paddingHorizontal: 20,
-    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: 'rgba(233,195,73,0.1)',
+    overflow: 'hidden',
+  },
+  journeyCtaTint: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(255,255,255,0.03)',
+  },
+  journeyCtaHit: {
     flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'center',
-    gap: 12,
-    shadowColor: colors.shadowGold,
-    shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 1,
-    shadowRadius: 15,
-    elevation: 10,
+    gap: 24,
+    paddingVertical: 20,
+    paddingHorizontal: 56,
   },
-  submitText: {
-    color: colors.onSecondary,
-    fontWeight: '700',
-    fontSize: 18,
-    letterSpacing: 0.5,
+  journeyCtaPressed: {
+    transform: [{ scale: 0.95 }],
+  },
+  journeyCtaLabel: {
+    color: colors.secondary,
+    fontWeight: '600',
+    textTransform: 'uppercase' as const,
     fontFamily: FONTS.label,
-  },
-  submitIcon: {
-    color: colors.onSecondary,
-    fontSize: 22,
-    fontWeight: '700',
   },
   footer: {
     marginTop: 40,

@@ -1,6 +1,7 @@
 import { useFonts } from 'expo-font';
 import {
   ActivityIndicator,
+  ImageBackground,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -8,11 +9,13 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
+import { BlurView } from 'expo-blur';
+import { LinearGradient } from 'expo-linear-gradient';
 import { Manrope_400Regular, Manrope_500Medium, Manrope_700Bold } from '@expo-google-fonts/manrope';
 import { NotoSerif_700Bold_Italic } from '@expo-google-fonts/noto-serif';
 import { CosmicLogoMark } from '../../components/CosmicLogoMark';
 import { GoldGradientTitle } from '../../components/cosmic/GoldGradientTitle';
-import { CosmicScreenBackground } from '../../components/cosmic/CosmicScreenBackground';
 import { colors } from '../../theme/colors';
 import { FONTS, styles } from './styles';
 
@@ -35,11 +38,25 @@ export function LoginScreen({ onLogin }: LoginScreenProps) {
   const titleSize = windowWidth >= 768 ? 56 : 48;
   const titleLine = Math.round(titleSize * 1.15);
   const titleTracking = titleSize * 0.2;
+  const ctaLabelSize = windowWidth >= 768 ? 16 : 14;
+  const ctaArrowSize = windowWidth >= 768 ? 28 : 24;
 
   if (!fontsLoaded) {
     return (
       <View style={styles.root}>
-        <CosmicScreenBackground />
+        <ImageBackground
+          source={require('../../../assets/fundo-login.jpeg')}
+          resizeMode="cover"
+          style={styles.backgroundImage}
+        >
+          <LinearGradient
+            colors={['rgba(7,10,20,0.14)', 'rgba(7, 10, 20, 0.69)', 'rgba(7,10,20,0.52)']}
+            locations={[0, 0.55, 1]}
+            start={{ x: 0.5, y: 0 }}
+            end={{ x: 0.5, y: 1 }}
+            style={styles.backgroundOverlay}
+          />
+        </ImageBackground>
         <View
           style={{
             ...StyleSheet.absoluteFillObject,
@@ -55,7 +72,19 @@ export function LoginScreen({ onLogin }: LoginScreenProps) {
 
   return (
     <View style={styles.root}>
-      <CosmicScreenBackground />
+      <ImageBackground
+        source={require('../../../assets/fundo-login.jpeg')}
+        resizeMode="cover"
+        style={styles.backgroundImage}
+      >
+        <LinearGradient
+          colors={['rgba(7,10,20,0.14)', 'rgba(7,10,20,0.32)', 'rgba(7,10,20,0.52)']}
+          locations={[0, 0.55, 1]}
+          start={{ x: 0.5, y: 0 }}
+          end={{ x: 0.5, y: 1 }}
+          style={styles.backgroundOverlay}
+        />
+      </ImageBackground>
       <ScrollView
         style={styles.scroll}
         contentContainerStyle={styles.scrollContent}
@@ -79,13 +108,32 @@ export function LoginScreen({ onLogin }: LoginScreenProps) {
           </View>
 
           <View style={[styles.ctaSection, styles.ctaSectionGap]}>
-            <Pressable
-              style={styles.submitButton}
-              onPress={onLogin}
-              accessibilityLabel="Entrar"
-            >
-              <Text style={styles.submitText}>Iniciar jornada</Text>
-            </Pressable>
+            <View style={styles.journeyCtaWrap}>
+              <BlurView intensity={40} tint="dark" style={StyleSheet.absoluteFillObject} />
+              <View style={styles.journeyCtaTint} pointerEvents="none" />
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel="Iniciar jornada"
+                onPress={onLogin}
+                style={({ pressed }) => [
+                  styles.journeyCtaHit,
+                  pressed && styles.journeyCtaPressed,
+                ]}
+              >
+                <Text
+                  style={[
+                    styles.journeyCtaLabel,
+                    {
+                      fontSize: ctaLabelSize,
+                      letterSpacing: ctaLabelSize * 0.3,
+                    },
+                  ]}
+                >
+                  INICIAR JORNADA
+                </Text>
+                <MaterialIcons name="east" size={ctaArrowSize} color={colors.secondary} />
+              </Pressable>
+            </View>
           </View>
         </View>
 
