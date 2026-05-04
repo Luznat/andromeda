@@ -1,6 +1,4 @@
-import { useFonts } from 'expo-font';
 import {
-  ActivityIndicator,
   ImageBackground,
   Pressable,
   ScrollView,
@@ -12,8 +10,6 @@ import {
 import { MaterialIcons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Manrope_400Regular, Manrope_500Medium, Manrope_700Bold } from '@expo-google-fonts/manrope';
-import { NotoSerif_700Bold_Italic } from '@expo-google-fonts/noto-serif';
 import { CosmicLogoMark } from '../../components/CosmicLogoMark';
 import { GoldGradientTitle } from '../../components/cosmic/GoldGradientTitle';
 import { colors } from '../../theme/colors';
@@ -26,13 +22,6 @@ type LoginScreenProps = {
 export function LoginScreen({ onLogin }: LoginScreenProps) {
   const { width: windowWidth } = useWindowDimensions();
 
-  const [fontsLoaded] = useFonts({
-    NotoSerif_700Bold_Italic,
-    Manrope_400Regular,
-    Manrope_500Medium,
-    Manrope_700Bold,
-  });
-
   const ring = windowWidth >= 768 ? 160 : 128;
   const iconSize = windowWidth >= 768 ? 64 : 56;
   const titleSize = windowWidth >= 768 ? 56 : 48;
@@ -40,35 +29,6 @@ export function LoginScreen({ onLogin }: LoginScreenProps) {
   const titleTracking = titleSize * 0.2;
   const ctaLabelSize = windowWidth >= 768 ? 16 : 14;
   const ctaArrowSize = windowWidth >= 768 ? 28 : 24;
-
-  if (!fontsLoaded) {
-    return (
-      <View style={styles.root}>
-        <ImageBackground
-          source={require('../../../assets/fundo-login.jpeg')}
-          resizeMode="cover"
-          style={styles.backgroundImage}
-        >
-          <LinearGradient
-            colors={['rgba(8,11,26,0.55)', 'rgba(8,11,26,0.68)', 'rgba(8,11,26,0.78)']}
-            locations={[0, 0.48, 1]}
-            start={{ x: 0.5, y: 0 }}
-            end={{ x: 0.5, y: 1 }}
-            style={styles.backgroundOverlay}
-          />
-        </ImageBackground>
-        <View
-          style={{
-            ...StyleSheet.absoluteFillObject,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <ActivityIndicator size="large" color={colors.secondary} />
-        </View>
-      </View>
-    );
-  }
 
   return (
     <View style={styles.root}>

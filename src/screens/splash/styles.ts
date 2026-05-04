@@ -1,5 +1,6 @@
-import { Platform, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { colors } from '../../theme/colors';
+import { FONT_FAMILIES } from '../../theme/fonts';
 
 export const styles = StyleSheet.create({
   root: {
@@ -28,7 +29,7 @@ export const styles = StyleSheet.create({
     fontWeight: '700',
     fontStyle: 'italic',
     letterSpacing: 2,
-    fontFamily: Platform.select({ ios: 'Georgia', android: 'serif', default: undefined }),
+    fontFamily: FONT_FAMILIES.boldItalic,
   },
   title: {
     color: colors.textPrimary,
@@ -36,12 +37,14 @@ export const styles = StyleSheet.create({
     fontWeight: '700',
     lineHeight: 38,
     marginBottom: 12,
+    fontFamily: FONT_FAMILIES.bold,
   },
   subtitle: {
     color: colors.textSecondary,
     fontSize: 16,
     lineHeight: 24,
     marginBottom: 36,
+    fontFamily: FONT_FAMILIES.regular,
   },
   primaryButton: {
     backgroundColor: colors.secondary,
@@ -60,6 +63,7 @@ export const styles = StyleSheet.create({
     color: colors.onSecondary,
     fontWeight: '700',
     fontSize: 17,
+    fontFamily: FONT_FAMILIES.bold,
   },
   secondaryButton: {
     borderWidth: 1,
@@ -72,5 +76,6 @@ export const styles = StyleSheet.create({
     color: colors.primary,
     fontWeight: '600',
     fontSize: 15,
+    fontFamily: FONT_FAMILIES.semiBold,
   },
 });

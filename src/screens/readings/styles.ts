@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { colors } from '../../theme/colors';
+import { FONT_FAMILIES } from '../../theme/fonts';
 
 export const styles = StyleSheet.create({
   root: {
@@ -36,6 +37,7 @@ export const styles = StyleSheet.create({
     color: colors.textSecondary,
     fontSize: 12,
     fontWeight: '600',
+    fontFamily: FONT_FAMILIES.semiBold,
   },
   filterLabelActive: {
     color: colors.onSecondary,
@@ -75,6 +77,7 @@ export const styles = StyleSheet.create({
     color: colors.secondary,
     fontWeight: '700',
     fontSize: 12,
+    fontFamily: FONT_FAMILIES.bold,
   },
   specialty: {
     color: colors.secondaryFixed,
@@ -82,17 +85,20 @@ export const styles = StyleSheet.create({
     fontWeight: '700',
     textTransform: 'uppercase',
     fontStyle: 'italic',
+    fontFamily: FONT_FAMILIES.boldItalic,
     letterSpacing: 0.6,
   },
   title: {
     color: colors.primary,
     fontSize: 22,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
   },
   description: {
     color: colors.textSecondary,
     fontSize: 13,
     lineHeight: 18,
+    fontFamily: FONT_FAMILIES.regular,
   },
   footerRow: {
     flexDirection: 'row',
@@ -104,6 +110,7 @@ export const styles = StyleSheet.create({
     color: colors.inputPlaceholder,
     fontSize: 10,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
     textTransform: 'uppercase',
     letterSpacing: 0.8,
   },
@@ -111,11 +118,13 @@ export const styles = StyleSheet.create({
     color: colors.textPrimary,
     fontSize: 20,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
   },
   priceDetail: {
     color: colors.inputPlaceholder,
     fontSize: 12,
     fontWeight: '400',
+    fontFamily: FONT_FAMILIES.regular,
   },
   detailsButton: {
     backgroundColor: colors.primaryContainer,
@@ -129,6 +138,7 @@ export const styles = StyleSheet.create({
     color: colors.primary,
     fontSize: 12,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
     textTransform: 'uppercase',
   },
 });

@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { colors } from '../../theme/colors';
+import { FONT_FAMILIES } from '../../theme/fonts';
 
 export const styles = StyleSheet.create({
   root: {
@@ -36,6 +37,7 @@ export const styles = StyleSheet.create({
     color: colors.textPrimary,
     fontSize: 14,
     paddingVertical: 12,
+    fontFamily: FONT_FAMILIES.regular,
   },
   sectionBlock: {
     gap: 14,
@@ -49,6 +51,7 @@ export const styles = StyleSheet.create({
     color: colors.secondary,
     fontSize: 12,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
     textTransform: 'uppercase',
     letterSpacing: 0.6,
   },
@@ -56,11 +59,13 @@ export const styles = StyleSheet.create({
     color: colors.primary,
     fontSize: 20,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
   },
   sectionTitle: {
     color: colors.textPrimary,
     fontSize: 28,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
   },
   chipsWrap: {
     flexDirection: 'row',
@@ -79,6 +84,7 @@ export const styles = StyleSheet.create({
     color: colors.textSecondary,
     fontSize: 12,
     fontWeight: '600',
+    fontFamily: FONT_FAMILIES.semiBold,
   },
   categoryGrid: {
     flexDirection: 'row',
@@ -111,6 +117,7 @@ export const styles = StyleSheet.create({
     color: colors.secondaryFixed,
     fontSize: 30,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
     textShadowColor: colors.textShadowGold,
     textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 10,
@@ -119,6 +126,7 @@ export const styles = StyleSheet.create({
     color: colors.textPrimary,
     fontSize: 14,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
     letterSpacing: 0.5,
   },
   featuredCard: {
@@ -145,6 +153,7 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.chipSecondaryBg,
     fontSize: 10,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
     textTransform: 'uppercase',
     borderRadius: 8,
     paddingHorizontal: 8,
@@ -155,11 +164,13 @@ export const styles = StyleSheet.create({
     color: colors.primary,
     fontSize: 20,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
   },
   featuredDescription: {
     color: colors.textSecondary,
     fontSize: 13,
     lineHeight: 19,
+    fontFamily: FONT_FAMILIES.regular,
   },
   featuredFooter: {
     marginTop: 2,
@@ -172,6 +183,7 @@ export const styles = StyleSheet.create({
     color: colors.secondary,
     fontSize: 18,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
   },
   featuredButton: {
     borderRadius: 999,
@@ -183,6 +195,7 @@ export const styles = StyleSheet.create({
     color: colors.onSecondary,
     fontSize: 12,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
     textTransform: 'uppercase',
     letterSpacing: 0.6,
   },
@@ -210,16 +223,19 @@ export const styles = StyleSheet.create({
     color: colors.primary,
     fontSize: 15,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
   },
   compactDescription: {
     color: colors.textSecondary,
     fontSize: 12,
     lineHeight: 16,
+    fontFamily: FONT_FAMILIES.regular,
   },
   compactMeta: {
     color: colors.secondary,
     fontSize: 11,
     fontWeight: '600',
+    fontFamily: FONT_FAMILIES.semiBold,
   },
   compactChevron: {
     color: colors.secondary,
@@ -245,6 +261,7 @@ export const styles = StyleSheet.create({
     color: colors.secondary,
     fontSize: 10,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
     textTransform: 'uppercase',
     letterSpacing: 1.4,
   },
@@ -252,10 +269,12 @@ export const styles = StyleSheet.create({
     color: colors.white,
     fontSize: 26,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
   },
   exploreDescription: {
     color: 'rgba(255,255,255,0.8)',
     fontSize: 13,
     lineHeight: 18,
+    fontFamily: FONT_FAMILIES.regular,
   },
 });

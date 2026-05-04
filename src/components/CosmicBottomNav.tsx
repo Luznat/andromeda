@@ -3,6 +3,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import type { ComponentProps } from 'react';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { colors } from '../theme/colors';
+import { FONT_FAMILIES } from '../theme/fonts';
 
 export type CosmicTabId = 'home' | 'search' | 'readings' | 'profile';
 
@@ -120,6 +121,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontWeight: '500',
     letterSpacing: 0.2,
+    fontFamily: FONT_FAMILIES.medium,
   },
   labelActive: {
     color: colors.secondary,

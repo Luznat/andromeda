@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { colors } from '../../theme/colors';
+import { FONT_FAMILIES } from '../../theme/fonts';
 
 export const styles = StyleSheet.create({
   root: {
@@ -41,6 +42,7 @@ export const styles = StyleSheet.create({
     fontWeight: '700',
     fontStyle: 'italic',
     letterSpacing: 1.5,
+    fontFamily: FONT_FAMILIES.boldItalic,
   },
   topBarTitlePremium: {
     letterSpacing: 2.6,
@@ -67,6 +69,7 @@ export const styles = StyleSheet.create({
     letterSpacing: 1.2,
     fontSize: 10,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
   },
 
   avatarFrame: {
@@ -107,6 +110,7 @@ export const styles = StyleSheet.create({
     fontSize: 34,
     fontWeight: '700',
     textAlign: 'center',
+    fontFamily: FONT_FAMILIES.bold,
   },
   namePremium: {
     color: colors.secondary,
@@ -122,6 +126,7 @@ export const styles = StyleSheet.create({
     color: colors.textSecondary,
     fontSize: 13,
     fontWeight: '500',
+    fontFamily: FONT_FAMILIES.medium,
   },
   specialty: {
     color: colors.primary,
@@ -129,11 +134,13 @@ export const styles = StyleSheet.create({
     fontWeight: '700',
     textTransform: 'uppercase',
     letterSpacing: 1.3,
+    fontFamily: FONT_FAMILIES.bold,
   },
   specialtyPremium: {
     color: colors.secondary,
     fontSize: 10,
     letterSpacing: 1.8,
+    fontFamily: FONT_FAMILIES.bold,
   },
   sectionBlock: {
     gap: 14,
@@ -142,6 +149,7 @@ export const styles = StyleSheet.create({
     color: colors.secondary,
     fontSize: 24,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
   },
   sectionTitlePremium: {
     letterSpacing: 1.2,
@@ -168,6 +176,7 @@ export const styles = StyleSheet.create({
     color: colors.primary,
     fontSize: 16,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
   },
   scheduleRow: {
     flexDirection: 'row',
@@ -177,16 +186,19 @@ export const styles = StyleSheet.create({
   scheduleDay: {
     color: colors.textSecondary,
     fontSize: 13,
+    fontFamily: FONT_FAMILIES.regular,
   },
   scheduleTime: {
     color: colors.secondary,
     fontSize: 13,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
   },
   description: {
     color: colors.textSecondary,
     fontSize: 14,
     lineHeight: 22,
+    fontFamily: FONT_FAMILIES.regular,
   },
   specialtyGrid: {
     flexDirection: 'row',
@@ -217,12 +229,14 @@ export const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '700',
     textAlign: 'center',
+    fontFamily: FONT_FAMILIES.bold,
   },
   specialtyFeaturedHint: {
     color: colors.textSecondary,
     fontSize: 11,
     lineHeight: 15,
     textAlign: 'center',
+    fontFamily: FONT_FAMILIES.regular,
   },
   reviewsHeader: {
     flexDirection: 'row',
@@ -233,6 +247,7 @@ export const styles = StyleSheet.create({
     color: colors.primary,
     fontSize: 13,
     fontWeight: '600',
+    fontFamily: FONT_FAMILIES.semiBold,
   },
   reviewCard: {
     borderRadius: 14,
@@ -267,15 +282,18 @@ export const styles = StyleSheet.create({
     color: colors.primary,
     fontWeight: '700',
     fontSize: 13,
+    fontFamily: FONT_FAMILIES.bold,
   },
   reviewName: {
     color: colors.textPrimary,
     fontWeight: '600',
     fontSize: 12,
+    fontFamily: FONT_FAMILIES.semiBold,
   },
   reviewWhen: {
     color: colors.textSecondary,
     fontSize: 11,
+    fontFamily: FONT_FAMILIES.regular,
   },
   reviewStars: {
     flexDirection: 'row',
@@ -286,6 +304,7 @@ export const styles = StyleSheet.create({
     fontSize: 13,
     lineHeight: 20,
     fontStyle: 'italic',
+    fontFamily: FONT_FAMILIES.regular,
   },
   bottomCta: {
     position: 'absolute',
@@ -312,6 +331,7 @@ export const styles = StyleSheet.create({
     fontSize: 10,
     textTransform: 'uppercase',
     letterSpacing: 1,
+    fontFamily: FONT_FAMILIES.medium,
   },
   bottomCtaLabelPremium: {
     color: colors.secondary,
@@ -321,6 +341,7 @@ export const styles = StyleSheet.create({
     color: colors.textPrimary,
     fontSize: 20,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
   },
   bottomCtaPricePremium: {
     color: colors.secondary,
@@ -329,6 +350,7 @@ export const styles = StyleSheet.create({
     color: colors.textSecondary,
     fontSize: 12,
     fontWeight: '400',
+    fontFamily: FONT_FAMILIES.regular,
   },
   reserveButton: {
     borderRadius: 999,
@@ -350,6 +372,7 @@ export const styles = StyleSheet.create({
     color: colors.onSecondary,
     fontSize: 12,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
     textTransform: 'uppercase',
     letterSpacing: 0.6,
   },

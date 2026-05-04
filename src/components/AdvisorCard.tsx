@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { OracleAdvisor } from '../types/domain';
 import { colors } from '../theme/colors';
+import { FONT_FAMILIES } from '../theme/fonts';
 
 type AdvisorCardProps = {
   advisor: OracleAdvisor;
@@ -39,19 +40,23 @@ const styles = StyleSheet.create({
     color: colors.textPrimary,
     fontWeight: '700',
     fontSize: 16,
+    fontFamily: FONT_FAMILIES.bold,
   },
   status: {
     color: colors.secondary,
     fontWeight: '600',
     fontSize: 12,
+    fontFamily: FONT_FAMILIES.semiBold,
   },
   specialty: {
     color: colors.primary,
     fontWeight: '600',
+    fontFamily: FONT_FAMILIES.semiBold,
   },
   bio: {
     color: colors.textSecondary,
     lineHeight: 20,
+    fontFamily: FONT_FAMILIES.regular,
   },
   footer: {
     flexDirection: 'row',
@@ -60,5 +65,6 @@ const styles = StyleSheet.create({
   detail: {
     color: colors.textPrimary,
     fontSize: 13,
+    fontFamily: FONT_FAMILIES.regular,
   },
 });

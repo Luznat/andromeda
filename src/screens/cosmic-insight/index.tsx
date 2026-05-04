@@ -1,23 +1,6 @@
 import { useMemo } from 'react';
-import {
-  ActivityIndicator,
-  Image,
-  Pressable,
-  ScrollView,
-  Share,
-  Text,
-  useWindowDimensions,
-  View,
-} from 'react-native';
+import { Image, Pressable, ScrollView, Share, Text, useWindowDimensions, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import {
-  Manrope_400Regular,
-  Manrope_500Medium,
-  Manrope_600SemiBold,
-  Manrope_700Bold,
-} from '@expo-google-fonts/manrope';
-import { NotoSerif_400Regular, NotoSerif_700Bold } from '@expo-google-fonts/noto-serif';
-import { useFonts } from 'expo-font';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { CosmicHeader } from '../../components/CosmicHeader';
 import { CosmicScreenBackground } from '../../components/cosmic/CosmicScreenBackground';
@@ -45,15 +28,6 @@ export function CosmicInsightScreen({ insight, onBack }: CosmicInsightScreenProp
   const isWideSplit = width >= 720;
   const isOracleWide = width >= 640;
 
-  const [fontsLoaded] = useFonts({
-    Manrope_400Regular,
-    Manrope_500Medium,
-    Manrope_600SemiBold,
-    Manrope_700Bold,
-    NotoSerif_400Regular,
-    NotoSerif_700Bold,
-  });
-
   const shareMessage = useMemo(
     () => `${insight.title}\n\n${insight.paragraphs.join('\n\n')}`,
     [insight.title, insight.paragraphs],
@@ -72,14 +46,6 @@ export function CosmicInsightScreen({ insight, onBack }: CosmicInsightScreenProp
     const msg = `${o.title}\n\n"${o.quote}"`;
     Share.share({ message: msg, title: o.title }).catch(() => {});
   };
-
-  if (!fontsLoaded) {
-    return (
-      <View style={styles.loadingRoot}>
-        <ActivityIndicator color={colors.primary} size="large" />
-      </View>
-    );
-  }
 
   const horoscopeHeading = insight.horoscopeHeading ?? 'Horóscopo do Dia';
 

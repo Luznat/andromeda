@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { colors } from '../../theme/colors';
+import { FONT_FAMILIES } from '../../theme/fonts';
 
 export const styles = StyleSheet.create({
   root: {
@@ -80,6 +81,7 @@ export const styles = StyleSheet.create({
     color: colors.textPrimary,
     fontSize: 32,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
     letterSpacing: -0.5,
     marginBottom: 10,
     textAlign: 'center',
@@ -103,6 +105,7 @@ export const styles = StyleSheet.create({
     color: colors.primary,
     fontSize: 11,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
     textTransform: 'uppercase',
     letterSpacing: 1.2,
   },
@@ -127,11 +130,13 @@ export const styles = StyleSheet.create({
     color: colors.secondary,
     fontSize: 20,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
   },
   statLabel: {
     color: colors.textSecondary,
     fontSize: 10,
     fontWeight: '600',
+    fontFamily: FONT_FAMILIES.semiBold,
     textTransform: 'uppercase',
     letterSpacing: 0.4,
     marginTop: 6,
@@ -167,12 +172,14 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '700',
     fontStyle: 'italic',
+    fontFamily: FONT_FAMILIES.boldItalic,
   },
   constellationSubtitle: {
     color: colors.textSecondary,
     fontSize: 13,
     marginTop: 4,
     lineHeight: 18,
+    fontFamily: FONT_FAMILIES.regular,
   },
   progressTrack: {
     height: 8,
@@ -189,10 +196,12 @@ export const styles = StyleSheet.create({
     color: colors.textSecondary,
     fontSize: 12,
     lineHeight: 18,
+    fontFamily: FONT_FAMILIES.regular,
   },
   constellationHintBold: {
     color: colors.secondary,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
   },
   menuList: {
     gap: 14,
@@ -227,6 +236,7 @@ export const styles = StyleSheet.create({
     color: colors.textPrimary,
     fontSize: 15,
     fontWeight: '600',
+    fontFamily: FONT_FAMILIES.semiBold,
     letterSpacing: 0.3,
     flex: 1,
   },
@@ -247,12 +257,14 @@ export const styles = StyleSheet.create({
     color: colors.error,
     fontSize: 11,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
     textTransform: 'uppercase',
     letterSpacing: 1.6,
   },
   versionText: {
     color: 'rgba(198,198,198,0.35)',
     fontSize: 10,
+    fontFamily: FONT_FAMILIES.regular,
     textTransform: 'uppercase',
     letterSpacing: 2,
     textAlign: 'center',

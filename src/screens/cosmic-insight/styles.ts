@@ -4,24 +4,18 @@ import { colors } from '../../theme/colors';
 const HERO_H = 420;
 
 export const fonts = {
-  display: 'NotoSerif_700Bold',
-  displayRegular: 'NotoSerif_400Regular',
-  body: 'Manrope_400Regular',
-  bodyMedium: 'Manrope_500Medium',
-  bodySemi: 'Manrope_600SemiBold',
-  bodyBold: 'Manrope_700Bold',
+  display: 'OpenSans_700Bold',
+  displayRegular: 'OpenSans_400Regular',
+  body: 'OpenSans_400Regular',
+  bodyMedium: 'OpenSans_500Medium',
+  bodySemi: 'OpenSans_600SemiBold',
+  bodyBold: 'OpenSans_700Bold',
 } as const;
 
 export const styles = StyleSheet.create({
   root: {
     flex: 1,
     backgroundColor: colors.background,
-  },
-  loadingRoot: {
-    flex: 1,
-    backgroundColor: colors.background,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   scroll: {
     flex: 1,

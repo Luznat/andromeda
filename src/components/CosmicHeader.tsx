@@ -2,6 +2,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { CosmicLogoMark } from './CosmicLogoMark';
 import { colors } from '../theme/colors';
+import { FONT_FAMILIES } from '../theme/fonts';
 
 const HEADER_BRAND_TITLE = 'Andrômeda';
 
@@ -76,6 +77,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     fontStyle: 'italic',
     letterSpacing: 2,
+    fontFamily: FONT_FAMILIES.boldItalic,
   },
   topActions: {
     flexDirection: 'row',
@@ -100,5 +102,6 @@ const styles = StyleSheet.create({
     color: colors.textPrimary,
     fontWeight: '700',
     fontSize: 12,
+    fontFamily: FONT_FAMILIES.bold,
   },
 });

@@ -2,11 +2,10 @@ import { StyleSheet } from 'react-native';
 import { colors } from '../../theme/colors';
 
 export const FONTS = {
-  // Chaves batem com useFonts(…)
-  headline: 'NotoSerif_700Bold_Italic',
-  body: 'Manrope_400Regular',
-  bodyMedium: 'Manrope_500Medium',
-  label: 'Manrope_700Bold',
+  headline: 'OpenSans_700Bold_Italic',
+  body: 'OpenSans_400Regular',
+  bodyMedium: 'OpenSans_500Medium',
+  label: 'OpenSans_700Bold',
 } as const;
 
 export const styles = StyleSheet.create({

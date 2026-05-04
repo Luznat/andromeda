@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { colors } from '../../theme/colors';
+import { FONT_FAMILIES } from '../../theme/fonts';
 
 const baseStyles = StyleSheet.create({
   root: {
@@ -42,6 +43,7 @@ const baseStyles = StyleSheet.create({
     lineHeight: 38,
     fontWeight: '700',
     maxWidth: 280,
+    fontFamily: FONT_FAMILIES.bold,
   },
   heroTags: {
     flexDirection: 'row',
@@ -52,6 +54,7 @@ const baseStyles = StyleSheet.create({
     color: colors.secondary,
     fontSize: 10,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
     textTransform: 'uppercase',
     borderWidth: 1,
     borderColor: colors.chipSecondaryBorder,
@@ -65,6 +68,7 @@ const baseStyles = StyleSheet.create({
     color: colors.primary,
     fontSize: 10,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
     textTransform: 'uppercase',
     borderWidth: 1,
     borderColor: colors.chipPrimaryBorder,
@@ -83,11 +87,13 @@ const baseStyles = StyleSheet.create({
     color: colors.textSecondary,
     fontSize: 13,
     fontWeight: '600',
+    fontFamily: FONT_FAMILIES.semiBold,
   },
   sectionTitle: {
     color: colors.textPrimary,
     fontSize: 28,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
   },
   categoryGrid: {
     flexDirection: 'row',
@@ -118,11 +124,13 @@ const baseStyles = StyleSheet.create({
     color: colors.primary,
     fontSize: 28,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
   },
   categoryLabel: {
     color: colors.textPrimary,
     fontSize: 15,
     fontWeight: '600',
+    fontFamily: FONT_FAMILIES.semiBold,
   },
   featuredList: {
     gap: 14,
@@ -157,6 +165,7 @@ const baseStyles = StyleSheet.create({
     color: colors.onSecondary,
     backgroundColor: colors.secondary,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
     fontSize: 12,
     borderRadius: 8,
     paddingVertical: 4,
@@ -171,6 +180,7 @@ const baseStyles = StyleSheet.create({
     color: colors.secondary,
     fontSize: 10,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
     letterSpacing: 1.2,
     textTransform: 'uppercase',
   },
@@ -178,11 +188,13 @@ const baseStyles = StyleSheet.create({
     color: colors.textPrimary,
     fontSize: 18,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
   },
   featuredDescription: {
     color: colors.textSecondary,
     fontSize: 13,
     lineHeight: 18,
+    fontFamily: FONT_FAMILIES.regular,
   },
   featuredMeta: {
     marginTop: 2,
@@ -193,10 +205,12 @@ const baseStyles = StyleSheet.create({
   featuredPrice: {
     color: colors.primary,
     fontWeight: '700',
+    fontFamily: FONT_FAMILIES.bold,
   },
   featuredDuration: {
     color: colors.textSecondary,
     fontSize: 11,
+    fontFamily: FONT_FAMILIES.medium,
     textTransform: 'uppercase',
     borderWidth: 1,
     borderColor: colors.primaryOutlineFaint,
