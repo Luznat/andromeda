@@ -50,8 +50,8 @@ export function LoginScreen({ onLogin }: LoginScreenProps) {
           style={styles.backgroundImage}
         >
           <LinearGradient
-            colors={['rgba(7,10,20,0.14)', 'rgba(7, 10, 20, 0.69)', 'rgba(7,10,20,0.52)']}
-            locations={[0, 0.55, 1]}
+            colors={['rgba(8,11,26,0.55)', 'rgba(8,11,26,0.68)', 'rgba(8,11,26,0.78)']}
+            locations={[0, 0.48, 1]}
             start={{ x: 0.5, y: 0 }}
             end={{ x: 0.5, y: 1 }}
             style={styles.backgroundOverlay}
@@ -78,8 +78,8 @@ export function LoginScreen({ onLogin }: LoginScreenProps) {
         style={styles.backgroundImage}
       >
         <LinearGradient
-          colors={['rgba(7,10,20,0.14)', 'rgba(7,10,20,0.32)', 'rgba(7,10,20,0.52)']}
-          locations={[0, 0.55, 1]}
+          colors={['rgba(8,11,26,0.55)', 'rgba(8,11,26,0.68)', 'rgba(8,11,26,0.78)']}
+          locations={[0, 0.48, 1]}
           start={{ x: 0.5, y: 0 }}
           end={{ x: 0.5, y: 1 }}
           style={styles.backgroundOverlay}

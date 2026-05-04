@@ -9,6 +9,11 @@ const baseStyles = StyleSheet.create({
   scroll: {
     flex: 1,
     zIndex: 5,
+    backgroundColor: 'transparent',
+  },
+  homeWallpaper: {
+    ...StyleSheet.absoluteFillObject,
+    zIndex: 0,
   },
   content: {
     paddingHorizontal: 20,

@@ -1,15 +1,24 @@
-import { Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import {
+  Image,
+  ImageBackground,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import type { CosmicTabId } from '../../components/CosmicBottomNav';
 import { CosmicBottomNav } from '../../components/CosmicBottomNav';
 import { CosmicHeader } from '../../components/CosmicHeader';
-import { CosmicScreenBackground } from '../../components/cosmic/CosmicScreenBackground';
 import { ORACLE_CATEGORIES } from '../../data/oracleCategories';
 import type { ProfessionalService } from '../../types/professionalService';
 import { gradients } from '../../theme/colors';
 import { styles } from './styles';
 
 const BOTTOM_BAR_CLEARANCE = 64;
+
+const HOME_WALLPAPER = require('../../../assets/fundo-login.jpeg');
 
 const HERO_NEBULA_URI =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuCQYeomCl1-uyFKB_INho71Xe5gxNZsWiPuByOwT8UrwqkW7R5iZr8QAQdyBLeqKfjdcOPy6RxnFQv9ndni9bq14t4CkOsPluyJ6AGtl4pt2xR53-w-MfCdOZUx9yEmlAHKE87FEp4Z4vvdF-vRWnSYjTvsEqJBsSbpIMeTMh-PG3FfIs1n3ChMLrLTJaZWrmjs1FmLSaYB39u00lGbFD6dvyPIYkVGe9EFnmqXLViB72jJcHhWIeX_O7TsyR5tezY-aCYmsvxRosA';
@@ -78,7 +87,28 @@ export function HomeScreen({
 }: HomeScreenProps) {
   return (
     <View style={styles.root}>
-      <CosmicScreenBackground variant="deepTop" />
+      <View
+        style={styles.homeWallpaper}
+        pointerEvents="none"
+        accessibilityElementsHidden
+        importantForAccessibility="no-hide-descendants"
+      >
+        <ImageBackground
+          source={HOME_WALLPAPER}
+          style={StyleSheet.absoluteFillObject}
+          resizeMode="cover"
+          accessibilityElementsHidden
+          importantForAccessibility="no-hide-descendants"
+        >
+          <LinearGradient
+            colors={['rgba(8,11,26,0.9)', 'rgba(8,11,26,0.94)', 'rgba(8,11,26,0.97)']}
+            locations={[0, 0.48, 1]}
+            start={{ x: 0.5, y: 0 }}
+            end={{ x: 0.5, y: 1 }}
+            style={StyleSheet.absoluteFillObject}
+          />
+        </ImageBackground>
+      </View>
       <ScrollView
         style={styles.scroll}
         contentContainerStyle={[

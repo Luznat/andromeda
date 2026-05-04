@@ -6,9 +6,14 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.surfaceScrim,
   },
+  profileWallpaper: {
+    ...StyleSheet.absoluteFillObject,
+    zIndex: 0,
+  },
   scroll: {
     flex: 1,
     zIndex: 5,
+    backgroundColor: 'transparent',
   },
   content: {
     paddingHorizontal: 24,

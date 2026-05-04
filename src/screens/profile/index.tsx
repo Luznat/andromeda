@@ -1,13 +1,14 @@
 import type { ComponentProps } from 'react';
-import { Image, Pressable, ScrollView, Text, View } from 'react-native';
+import { Image, ImageBackground, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import type { CosmicTabId } from '../../components/CosmicBottomNav';
 import { CosmicBottomNav } from '../../components/CosmicBottomNav';
 import { CosmicHeader } from '../../components/CosmicHeader';
-import { CosmicScreenBackground } from '../../components/cosmic/CosmicScreenBackground';
 import { colors } from '../../theme/colors';
 import { styles } from './styles';
+
+const PROFILE_WALLPAPER = require('../../../assets/profile.jpeg');
 
 type MaterialIconName = ComponentProps<typeof MaterialIcons>['name'];
 
@@ -28,7 +29,28 @@ type ProfileScreenProps = {
 export function ProfileScreen({ activeTab = 'profile', onTabChange, onLogout }: ProfileScreenProps) {
   return (
     <View style={styles.root}>
-      <CosmicScreenBackground variant="deepTop" />
+      <View
+        style={styles.profileWallpaper}
+        pointerEvents="none"
+        accessibilityElementsHidden
+        importantForAccessibility="no-hide-descendants"
+      >
+        <ImageBackground
+          source={PROFILE_WALLPAPER}
+          style={StyleSheet.absoluteFillObject}
+          resizeMode="cover"
+          accessibilityElementsHidden
+          importantForAccessibility="no-hide-descendants"
+        >
+          <LinearGradient
+            colors={['rgba(8,11,26,0.9)', 'rgba(8,11,26,0.94)', 'rgba(8,11,26,0.97)']}
+            locations={[0, 0.48, 1]}
+            start={{ x: 0.5, y: 0 }}
+            end={{ x: 0.5, y: 1 }}
+            style={StyleSheet.absoluteFillObject}
+          />
+        </ImageBackground>
+      </View>
       <ScrollView style={styles.scroll} contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <CosmicHeader />
 
