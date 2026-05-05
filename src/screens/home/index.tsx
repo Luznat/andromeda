@@ -11,7 +11,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 import type { CosmicTabId } from '../../components/CosmicBottomNav';
 import { CosmicBottomNav } from '../../components/CosmicBottomNav';
 import { CosmicHeader } from '../../components/CosmicHeader';
-import { ORACLE_CATEGORIES } from '../../data/oracleCategories';
+import { OracleCategoriesSection } from '../../components/OracleCategoriesSection';
+import type { OracleCategory } from '../../types/oracleCategory';
 import type { ProfessionalService } from '../../types/professionalService';
 import { gradients } from '../../theme/colors';
 import { styles } from './styles';
@@ -77,6 +78,7 @@ type HomeScreenProps = {
   onTabChange?: (id: CosmicTabId) => void;
   onOpenInsight?: (insightId: string) => void;
   onOpenService?: (service: ProfessionalService) => void;
+  onOpenCategory?: (category: OracleCategory) => void;
 };
 
 export function HomeScreen({
@@ -84,6 +86,7 @@ export function HomeScreen({
   onTabChange,
   onOpenInsight,
   onOpenService,
+  onOpenCategory,
 }: HomeScreenProps) {
   return (
     <View style={styles.root}>
@@ -183,20 +186,11 @@ export function HomeScreen({
           ))}
         </View>
 
-        <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>Oráculos e Artes</Text>
-        </View>
-
-        <View style={styles.categoryGrid}>
-          {ORACLE_CATEGORIES.map((category) => (
-            <View key={category.id} style={styles.categoryCard}>
-              <View style={styles.categoryIconWrap}>
-                <Text style={styles.categoryIcon}>{category.icon}</Text>
-              </View>
-              <Text style={styles.categoryLabel}>{category.label}</Text>
-            </View>
-          ))}
-        </View>
+        <OracleCategoriesSection
+          title="Oráculos e Artes"
+          variant="home"
+          onSelectCategory={(category) => onOpenCategory?.(category)}
+        />
       </ScrollView>
       <CosmicBottomNav activeTab={activeTab} onTabChange={onTabChange} />
     </View>

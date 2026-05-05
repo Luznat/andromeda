@@ -8,12 +8,14 @@ import { LoginScreen } from '../screens/login';
 import { ProfileScreen } from '../screens/profile';
 import { ProfessionalServiceScreen } from '../screens/professional-service';
 import { MessagesScreen } from '../screens/messages';
+import { OracleCategoryScreen } from '../screens/oracleCategory';
 import { ReadingsScreen } from '../screens/readings';
 import { SearchScreen } from '../screens/search';
 import { SplashScreen } from '../screens/splash';
 import { ChatScreen } from '../screens/chat';
 import type { CosmicInsight } from '../types/cosmicInsight';
 import type { MessageThreadPreview } from '../types/messageThread';
+import type { OracleCategory } from '../types/oracleCategory';
 import type { ProfessionalService } from '../types/professionalService';
 
 type AppRoute = 'splash' | 'login' | 'app';
@@ -27,6 +29,7 @@ export function AppNavigator() {
   const [selectedService, setSelectedService] = useState<ProfessionalService | null>(null);
   const [insight, setInsight] = useState<CosmicInsight | null>(null);
   const [activeChatThread, setActiveChatThread] = useState<MessageThreadPreview | null>(null);
+  const [activeCategory, setActiveCategory] = useState<OracleCategory | null>(null);
 
   if (currentRoute === 'splash') {
     return (
@@ -65,10 +68,27 @@ export function AppNavigator() {
     );
   }
 
+  if (activeCategory) {
+    return (
+      <View style={styles.appShell}>
+        <OracleCategoryScreen category={activeCategory} onBack={() => setActiveCategory(null)} />
+      </View>
+    );
+  }
+
   return (
     <View style={styles.appShell}>
       {activeTab === 'search' && (
-        <SearchScreen activeTab={activeTab} onTabChange={setActiveTab} />
+        <SearchScreen
+          activeTab={activeTab}
+          onTabChange={setActiveTab}
+          onOpenCategory={(category) => {
+            setInsight(null);
+            setSelectedService(null);
+            setActiveChatThread(null);
+            setActiveCategory(category);
+          }}
+        />
       )}
       {activeTab === 'messages' && (
         <MessagesScreen
@@ -88,6 +108,7 @@ export function AppNavigator() {
           onOpenService={(service) => {
             setInsight(null);
             setActiveChatThread(null);
+            setActiveCategory(null);
             setSelectedService(service);
           }}
         />
@@ -99,13 +120,21 @@ export function AppNavigator() {
           onOpenService={(service) => {
             setInsight(null);
             setActiveChatThread(null);
+            setActiveCategory(null);
             setSelectedService(service);
+          }}
+          onOpenCategory={(category) => {
+            setInsight(null);
+            setSelectedService(null);
+            setActiveChatThread(null);
+            setActiveCategory(category);
           }}
           onOpenInsight={(id) => {
             const next = getCosmicInsightById(id);
             if (next) {
               setSelectedService(null);
               setActiveChatThread(null);
+              setActiveCategory(null);
               setInsight(next);
             }
           }}

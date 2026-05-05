@@ -4,8 +4,8 @@ import type { CosmicTabId } from '../../components/CosmicBottomNav';
 import { CosmicBottomNav } from '../../components/CosmicBottomNav';
 import { CosmicHeader } from '../../components/CosmicHeader';
 import { CosmicScreenBackground } from '../../components/cosmic/CosmicScreenBackground';
-import { ORACLE_CATEGORIES } from '../../data/oracleCategories';
-import { colors } from '../../theme/colors';
+import { OracleCategoriesSection } from '../../components/OracleCategoriesSection';
+import type { OracleCategory } from '../../types/oracleCategory';
 import { styles } from './styles';
 
 const recentSearches = [
@@ -36,42 +36,13 @@ const featuredReadings = [
   },
 ];
 
-const categoryThemeById: Record<
-  string,
-  { cardBackground: string; cardBorder: string; iconBackground: string; iconBorder: string }
-> = {
-  '1': {
-    cardBackground: 'rgba(45, 11, 90, 0.45)',
-    cardBorder: 'rgba(214,186,255,0.55)',
-    iconBackground: 'rgba(214,186,255,0.16)',
-    iconBorder: 'rgba(214,186,255,0.65)',
-  },
-  '2': {
-    cardBackground: 'rgba(175, 141, 17, 0.22)',
-    cardBorder: 'rgba(233,195,73,0.55)',
-    iconBackground: 'rgba(233,195,73,0.18)',
-    iconBorder: 'rgba(233,195,73,0.65)',
-  },
-  '3': {
-    cardBackground: 'rgba(28, 45, 92, 0.42)',
-    cardBorder: 'rgba(151,182,255,0.5)',
-    iconBackground: 'rgba(151,182,255,0.16)',
-    iconBorder: 'rgba(151,182,255,0.6)',
-  },
-  '4': {
-    cardBackground: 'rgba(36, 74, 64, 0.35)',
-    cardBorder: 'rgba(108,214,179,0.48)',
-    iconBackground: 'rgba(108,214,179,0.16)',
-    iconBorder: 'rgba(108,214,179,0.55)',
-  },
-};
-
 type SearchScreenProps = {
   activeTab?: CosmicTabId;
   onTabChange?: (id: CosmicTabId) => void;
+  onOpenCategory?: (category: OracleCategory) => void;
 };
 
-export function SearchScreen({ activeTab = 'search', onTabChange }: SearchScreenProps) {
+export function SearchScreen({ activeTab = 'search', onTabChange, onOpenCategory }: SearchScreenProps) {
   return (
     <View style={styles.root}>
       <CosmicScreenBackground variant="deepTop" />
@@ -98,45 +69,11 @@ export function SearchScreen({ activeTab = 'search', onTabChange }: SearchScreen
           </View>
         </View>
 
-        <View style={styles.sectionBlock}>
-          <Text style={styles.sectionTitle}>Categorias populares</Text>
-          <View style={styles.categoryGrid}>
-            {ORACLE_CATEGORIES.map((category) => (
-              <View
-                key={category.id}
-                style={[
-                  styles.categoryCard,
-                  {
-                    backgroundColor: categoryThemeById[category.id]?.cardBackground ?? 'rgba(25, 30, 53, 0.78)',
-                    borderColor: categoryThemeById[category.id]?.cardBorder ?? colors.secondary,
-                  },
-                ]}
-              >
-                <View
-                  style={[
-                    styles.categoryIconWrap,
-                    {
-                      backgroundColor:
-                        categoryThemeById[category.id]?.iconBackground ?? 'rgba(233,195,73,0.14)',
-                      borderColor: categoryThemeById[category.id]?.iconBorder ?? colors.secondary,
-                    },
-                  ]}
-                >
-                  <Text
-                    style={[
-                      styles.categoryIcon,
-                      category.id === '3' && { color: '#b9cbff' },
-                      category.id === '4' && { color: '#84e7c4' },
-                    ]}
-                  >
-                    {category.icon}
-                  </Text>
-                </View>
-                <Text style={styles.categoryLabel}>{category.label}</Text>
-              </View>
-            ))}
-          </View>
-        </View>
+        <OracleCategoriesSection
+          title="Categorias populares"
+          variant="search"
+          onSelectCategory={(category) => onOpenCategory?.(category)}
+        />
 
         <View style={styles.sectionBlock}>
           <View style={styles.sectionHeader}>
