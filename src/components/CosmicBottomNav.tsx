@@ -5,7 +5,7 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { colors } from '../theme/colors';
 import { FONT_FAMILIES } from '../theme/fonts';
 
-export type CosmicTabId = 'home' | 'search' | 'readings' | 'profile';
+export type CosmicTabId = 'home' | 'search' | 'messages' | 'readings' | 'profile';
 
 type MaterialIconName = ComponentProps<typeof MaterialIcons>['name'];
 
@@ -18,6 +18,7 @@ type TabConfig = {
 const TABS: TabConfig[] = [
   { id: 'home', label: 'Inicio', icon: 'bedtime' },
   { id: 'search', label: 'Buscar', icon: 'search' },
+  { id: 'messages', label: 'Mensagens', icon: 'chat-bubble-outline' },
   { id: 'readings', label: 'Leituras', icon: 'menu-book' },
   { id: 'profile', label: 'Perfil', icon: 'person' },
 ];
@@ -62,7 +63,9 @@ export function CosmicBottomNav({
               color={isActive ? colors.secondary : colors.textSecondary}
               style={!isActive ? styles.iconDimmed : undefined}
             />
-            <Text style={[styles.label, isActive ? styles.labelActive : styles.labelInactive]}>{tab.label}</Text>
+            <Text style={[styles.label, isActive ? styles.labelActive : styles.labelInactive]} numberOfLines={2}>
+              {tab.label}
+            </Text>
           </Pressable>
         );
       })}
@@ -95,7 +98,7 @@ const styles = StyleSheet.create({
   },
   tabWrap: {
     flex: 1,
-    maxWidth: 100,
+    minWidth: 0,
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 3,
@@ -122,6 +125,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     letterSpacing: 0.2,
     fontFamily: FONT_FAMILIES.medium,
+    textAlign: 'center',
   },
   labelActive: {
     color: colors.secondary,

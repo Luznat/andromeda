@@ -7,10 +7,13 @@ import { CosmicInsightScreen } from '../screens/cosmic-insight';
 import { LoginScreen } from '../screens/login';
 import { ProfileScreen } from '../screens/profile';
 import { ProfessionalServiceScreen } from '../screens/professional-service';
+import { MessagesScreen } from '../screens/messages';
 import { ReadingsScreen } from '../screens/readings';
 import { SearchScreen } from '../screens/search';
 import { SplashScreen } from '../screens/splash';
+import { ChatScreen } from '../screens/chat';
 import type { CosmicInsight } from '../types/cosmicInsight';
+import type { MessageThreadPreview } from '../types/messageThread';
 import type { ProfessionalService } from '../types/professionalService';
 
 type AppRoute = 'splash' | 'login' | 'app';
@@ -23,6 +26,7 @@ export function AppNavigator() {
   const [activeTab, setActiveTab] = useState<CosmicTabId>('home');
   const [selectedService, setSelectedService] = useState<ProfessionalService | null>(null);
   const [insight, setInsight] = useState<CosmicInsight | null>(null);
+  const [activeChatThread, setActiveChatThread] = useState<MessageThreadPreview | null>(null);
 
   if (currentRoute === 'splash') {
     return (
@@ -53,10 +57,29 @@ export function AppNavigator() {
     );
   }
 
+  if (activeChatThread) {
+    return (
+      <View style={styles.appShell}>
+        <ChatScreen thread={activeChatThread} onBack={() => setActiveChatThread(null)} />
+      </View>
+    );
+  }
+
   return (
     <View style={styles.appShell}>
       {activeTab === 'search' && (
         <SearchScreen activeTab={activeTab} onTabChange={setActiveTab} />
+      )}
+      {activeTab === 'messages' && (
+        <MessagesScreen
+          activeTab={activeTab}
+          onTabChange={setActiveTab}
+          onOpenThread={(thread) => {
+            setInsight(null);
+            setSelectedService(null);
+            setActiveChatThread(thread);
+          }}
+        />
       )}
       {activeTab === 'readings' && (
         <ReadingsScreen
@@ -64,6 +87,7 @@ export function AppNavigator() {
           onTabChange={setActiveTab}
           onOpenService={(service) => {
             setInsight(null);
+            setActiveChatThread(null);
             setSelectedService(service);
           }}
         />
@@ -74,12 +98,14 @@ export function AppNavigator() {
           onTabChange={setActiveTab}
           onOpenService={(service) => {
             setInsight(null);
+            setActiveChatThread(null);
             setSelectedService(service);
           }}
           onOpenInsight={(id) => {
             const next = getCosmicInsightById(id);
             if (next) {
               setSelectedService(null);
+              setActiveChatThread(null);
               setInsight(next);
             }
           }}
