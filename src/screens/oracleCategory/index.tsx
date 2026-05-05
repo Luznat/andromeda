@@ -1,14 +1,15 @@
-import { Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Image, ImageBackground, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { CosmicScreenBackground } from '../../components/cosmic/CosmicScreenBackground';
-import { colors } from '../../theme/colors';
-import { FONT_FAMILIES } from '../../theme/fonts';
+import { LinearGradient } from 'expo-linear-gradient';
 import type { OracleCategory } from '../../types/oracleCategory';
+import { styles } from './styles';
 
 type OracleCategoryScreenProps = {
   category: OracleCategory;
   onBack: () => void;
 };
+
+const PROFILE_WALLPAPER = require('../../../assets/profile.jpeg');
 
 const CATEGORY_DESCRIPTIONS: Record<string, string> = {
   Tarot:
@@ -111,7 +112,28 @@ export function OracleCategoryScreen({ category, onBack }: OracleCategoryScreenP
 
   return (
     <View style={styles.root}>
-      <CosmicScreenBackground variant="deepTop" />
+      <View
+        style={styles.profileWallpaper}
+        pointerEvents="none"
+        accessibilityElementsHidden
+        importantForAccessibility="no-hide-descendants"
+      >
+        <ImageBackground
+          source={PROFILE_WALLPAPER}
+          style={StyleSheet.absoluteFillObject}
+          resizeMode="cover"
+          accessibilityElementsHidden
+          importantForAccessibility="no-hide-descendants"
+        >
+          <LinearGradient
+            colors={['rgba(8,11,26,0.62)', 'rgba(8,11,26,0.7)', 'rgba(8,11,26,0.8)']}
+            locations={[0, 0.48, 1]}
+            start={{ x: 0.5, y: 0 }}
+            end={{ x: 0.5, y: 1 }}
+            style={StyleSheet.absoluteFillObject}
+          />
+        </ImageBackground>
+      </View>
       <ScrollView style={styles.scroll} contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <Pressable style={styles.backButton} onPress={onBack} accessibilityRole="button">
@@ -217,269 +239,3 @@ export function OracleCategoryScreen({ category, onBack }: OracleCategoryScreenP
   );
 }
 
-const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-    backgroundColor: colors.surfaceScrim,
-  },
-  scroll: {
-    flex: 1,
-    zIndex: 5,
-  },
-  content: {
-    paddingHorizontal: 20,
-    paddingTop: 16,
-    paddingBottom: 32,
-    gap: 20,
-  },
-  header: {
-    minHeight: 44,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  backButton: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: colors.outlineVariant,
-    backgroundColor: colors.surfaceLowest,
-  },
-  headerTitle: {
-    color: colors.textPrimary,
-    fontSize: 18,
-    fontWeight: '700',
-    fontFamily: FONT_FAMILIES.bold,
-  },
-  headerSpacer: {
-    width: 40,
-    height: 40,
-  },
-  heroCard: {
-    borderRadius: 24,
-    borderWidth: 1,
-    borderColor: 'rgba(45, 11, 90, 0.3)',
-    backgroundColor: 'rgba(25, 30, 53, 0.6)',
-    paddingVertical: 24,
-    paddingHorizontal: 18,
-    gap: 10,
-    alignItems: 'center',
-  },
-  heroIcon: {
-    fontSize: 44,
-    color: colors.secondaryFixed,
-    fontWeight: '700',
-    fontFamily: FONT_FAMILIES.bold,
-  },
-  heroTitle: {
-    color: colors.textPrimary,
-    fontSize: 28,
-    fontWeight: '700',
-    fontFamily: FONT_FAMILIES.bold,
-  },
-  heroDescription: {
-    color: colors.textSecondary,
-    fontSize: 14,
-    lineHeight: 20,
-    textAlign: 'center',
-    fontFamily: FONT_FAMILIES.regular,
-  },
-  filterScroll: {
-    marginHorizontal: -4,
-  },
-  filterList: {
-    paddingHorizontal: 4,
-    gap: 10,
-  },
-  filterChip: {
-    minHeight: 40,
-    paddingHorizontal: 14,
-    borderRadius: 999,
-    borderWidth: 1,
-    borderColor: 'rgba(74, 69, 80, 0.2)',
-    backgroundColor: colors.surfaceMuted,
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 6,
-  },
-  filterChipActive: {
-    backgroundColor: colors.secondary,
-    borderColor: colors.secondary,
-  },
-  filterChipText: {
-    color: '#ccc4d1',
-    fontSize: 13,
-    fontFamily: FONT_FAMILIES.medium,
-  },
-  filterChipActiveText: {
-    color: colors.onSecondary,
-  },
-  cardsList: {
-    gap: 14,
-  },
-  profileCard: {
-    borderRadius: 24,
-    borderWidth: 1,
-    borderColor: 'rgba(45, 11, 90, 0.32)',
-    backgroundColor: 'rgba(25, 30, 53, 0.6)',
-    paddingVertical: 16,
-    paddingHorizontal: 16,
-    gap: 12,
-    overflow: 'hidden',
-  },
-  favoriteBadge: {
-    alignSelf: 'flex-end',
-    backgroundColor: 'rgba(233,195,73,0.18)',
-    borderRadius: 999,
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-  },
-  favoriteBadgeText: {
-    color: colors.secondary,
-    fontSize: 10,
-    textTransform: 'uppercase',
-    letterSpacing: 1,
-    fontFamily: FONT_FAMILIES.bold,
-  },
-  profileHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-  },
-  avatarRing: {
-    width: 74,
-    height: 74,
-    borderRadius: 37,
-    padding: 2,
-    backgroundColor: 'rgba(214,186,255,0.45)',
-  },
-  avatarImage: {
-    width: '100%',
-    height: '100%',
-    borderRadius: 35,
-  },
-  avatarFallback: {
-    flex: 1,
-    borderWidth: 1,
-    borderColor: colors.outlineVariant,
-    borderRadius: 35,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.surfaceLow,
-  },
-  avatarFallbackIcon: {
-    color: colors.primary,
-  },
-  profileMeta: {
-    flex: 1,
-    gap: 4,
-  },
-  profileName: {
-    color: colors.textPrimary,
-    fontSize: 20,
-    fontWeight: '700',
-    fontFamily: FONT_FAMILIES.bold,
-  },
-  ratingRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 4,
-  },
-  ratingIcon: {
-    color: colors.secondary,
-  },
-  ratingValue: {
-    color: colors.secondary,
-    fontSize: 13,
-    fontFamily: FONT_FAMILIES.bold,
-  },
-  ratingCount: {
-    color: colors.textSecondary,
-    fontSize: 12,
-    fontFamily: FONT_FAMILIES.regular,
-    marginLeft: 4,
-  },
-  tagList: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 8,
-  },
-  tagChip: {
-    borderRadius: 999,
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-    borderWidth: 1,
-    borderColor: 'rgba(214,186,255,0.1)',
-    backgroundColor: 'rgba(45,11,90,0.38)',
-  },
-  tagText: {
-    color: colors.primary,
-    fontSize: 10,
-    textTransform: 'uppercase',
-    letterSpacing: 0.8,
-    fontFamily: FONT_FAMILIES.semiBold,
-  },
-  cardFooter: {
-    borderTopWidth: 1,
-    borderTopColor: 'rgba(74, 69, 80, 0.2)',
-    paddingTop: 12,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  priceCaption: {
-    color: colors.textSecondary,
-    fontSize: 10,
-    textTransform: 'uppercase',
-    letterSpacing: 1.2,
-    fontFamily: FONT_FAMILIES.medium,
-  },
-  priceValue: {
-    color: colors.secondary,
-    fontSize: 20,
-    fontFamily: FONT_FAMILIES.bold,
-  },
-  priceUnit: {
-    color: colors.textSecondary,
-    fontSize: 12,
-    fontFamily: FONT_FAMILIES.regular,
-  },
-  contactButton: {
-    width: 42,
-    height: 42,
-    borderRadius: 21,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.primaryContainer,
-  },
-  contactIcon: {
-    color: colors.primary,
-  },
-  bottomBlock: {
-    marginTop: 8,
-    alignItems: 'center',
-    gap: 14,
-  },
-  bottomText: {
-    color: colors.textSecondary,
-    fontSize: 14,
-    fontFamily: FONT_FAMILIES.regular,
-  },
-  bottomButton: {
-    borderRadius: 999,
-    paddingHorizontal: 20,
-    paddingVertical: 11,
-    borderWidth: 1,
-    borderColor: colors.primaryOutlineFaint,
-    backgroundColor: colors.surfaceMuted,
-  },
-  bottomButtonText: {
-    flex: 1,
-    color: colors.primary,
-    fontSize: 14,
-    fontFamily: FONT_FAMILIES.bold,
-  },
-});
