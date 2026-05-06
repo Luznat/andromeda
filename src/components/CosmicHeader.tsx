@@ -82,11 +82,10 @@ const styles = StyleSheet.create({
   },
   brandText: {
     color: colors.secondary,
-    fontSize: 24,
-    fontWeight: '700',
-    fontStyle: 'italic',
-    letterSpacing: 2,
-    fontFamily: FONT_FAMILIES.boldItalic,
+    fontSize: 22,
+    fontWeight: '500',
+    letterSpacing: 4,
+    fontFamily: FONT_FAMILIES.brand,
   },
   topActions: {
     flexDirection: 'row',

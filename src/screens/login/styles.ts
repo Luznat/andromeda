@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 import { colors } from '../../theme/colors';
 
 export const FONTS = {
-  headline: 'OpenSans_700Bold_Italic',
+  headline: 'SpaceGrotesk_500Medium',
   body: 'OpenSans_400Regular',
   bodyMedium: 'OpenSans_500Medium',
   label: 'OpenSans_700Bold',

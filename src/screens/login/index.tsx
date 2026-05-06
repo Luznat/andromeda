@@ -26,7 +26,7 @@ export function LoginScreen({ onLogin }: LoginScreenProps) {
   const iconSize = windowWidth >= 768 ? 64 : 56;
   const titleSize = windowWidth >= 768 ? 56 : 48;
   const titleLine = Math.round(titleSize * 1.15);
-  const titleTracking = titleSize * 0.2;
+  const titleTracking = titleSize * 0.14;
   const ctaLabelSize = windowWidth >= 768 ? 16 : 14;
   const ctaArrowSize = windowWidth >= 768 ? 28 : 24;
 
@@ -62,6 +62,8 @@ export function LoginScreen({ onLogin }: LoginScreenProps) {
                 fontSize={titleSize}
                 lineHeight={titleLine}
                 letterSpacing={titleTracking}
+                fontStyle="normal"
+                fontWeight="500"
               />
             </View>
             <Text style={styles.tagline}>Conectando mundos, iluminando caminhos.</Text>

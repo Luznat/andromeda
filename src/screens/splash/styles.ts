@@ -19,17 +19,12 @@ export const styles = StyleSheet.create({
     gap: 10,
     marginBottom: 20,
   },
-  brandIcon: {
-    color: colors.primary,
-    fontSize: 32,
-  },
   brand: {
     color: colors.secondary,
-    fontSize: 32,
-    fontWeight: '700',
-    fontStyle: 'italic',
-    letterSpacing: 2,
-    fontFamily: FONT_FAMILIES.boldItalic,
+    fontSize: 30,
+    fontWeight: '500',
+    letterSpacing: 5,
+    fontFamily: FONT_FAMILIES.brand,
   },
   title: {
     color: colors.textPrimary,

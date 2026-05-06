@@ -9,6 +9,8 @@ type GoldGradientTitleProps = {
   fontSize: number;
   lineHeight: number;
   letterSpacing: number;
+  fontStyle?: 'normal' | 'italic';
+  fontWeight?: '400' | '500' | '600' | '700';
 };
 
 /**
@@ -20,6 +22,8 @@ export function GoldGradientTitle({
   fontSize,
   lineHeight,
   letterSpacing,
+  fontStyle = 'italic',
+  fontWeight = '700',
 }: GoldGradientTitleProps) {
   if (Platform.OS === 'web') {
     return (
@@ -29,8 +33,8 @@ export function GoldGradientTitle({
           fontSize,
           lineHeight,
           fontFamily,
-          fontStyle: 'italic',
-          fontWeight: '700',
+          fontStyle,
+          fontWeight,
           letterSpacing,
           textAlign: 'center',
           textShadowColor: colors.secondaryFixed,
@@ -43,7 +47,7 @@ export function GoldGradientTitle({
     );
   }
 
-  const w = 360;
+  const w = 400;
   const h = lineHeight + 12;
 
   return (
@@ -64,8 +68,8 @@ export function GoldGradientTitle({
             fontSize,
             lineHeight,
             fontFamily,
-            fontStyle: 'italic',
-            fontWeight: '700',
+            fontStyle,
+            fontWeight,
             letterSpacing,
             textAlign: 'center',
           }}

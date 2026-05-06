@@ -1,4 +1,5 @@
 import { Pressable, Text, View } from 'react-native';
+import { CosmicLogoMark } from '../../components/CosmicLogoMark';
 import { CosmicScreenBackground } from '../../components/cosmic/CosmicScreenBackground';
 import { styles } from './styles';
 
@@ -13,8 +14,8 @@ export function SplashScreen({ onStartJourney, onAccessAccount }: SplashScreenPr
       <CosmicScreenBackground />
       <View style={styles.content}>
         <View style={styles.brandRow}>
-          <Text style={styles.brandIcon}>✦</Text>
-          <Text style={styles.brand}>Andromeda</Text>
+          <CosmicLogoMark size={48} />
+          <Text style={styles.brand}>Andrômeda</Text>
         </View>
         <Text style={styles.title}>Sua conexao com o mistico comeca aqui</Text>
         <Text style={styles.subtitle}>

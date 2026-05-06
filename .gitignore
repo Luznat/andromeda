@@ -39,3 +39,6 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# local APK output (copy of Gradle build for easy transfer)
+/build-output
